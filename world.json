@@ -1,71 +1,234 @@
 {
   "game": {
-    "day": 1,
-    "maxDays": 20,
-    "cash": 200,
-    "location": "Abilene",
-    "capacity": 50,
+    "day": 26,
+    "maxDays": 100,
+    "cash": 3692,
+    "location": "Tombstone",
+    "capacity": 20,
     "eventsEnabled": true,
     "eventChances": {
       "danger": 0.15000000000000002,
       "good": 0.2
     },
-    "inventory": {
-      "whiskey": 5
-    },
-    "zoom": 1.6000000000000005,
-    "offsetX": 0.7365967365967663,
-    "offsetY": -16.276923076923197,
+    "inventory": {},
+    "zoom": 1.3000000000000003,
+    "offsetX": 78.54848484848469,
+    "offsetY": -50.7000000000001,
     "activityLog": [
+      {
+        "text": "📂 Loaded world.json",
+        "type": "system",
+        "round": 1
+      },
       {
         "text": "─── Round 1 ───",
         "type": "system",
         "round": 1
       },
       {
-        "text": "Map editor: addTown mode active — close this menu then interact with map",
+        "text": "🎁 Windfall! You received 6 grain",
+        "type": "good",
+        "round": 1
+      },
+      {
+        "text": "✨ Lucky find! You gained $37",
+        "type": "good",
+        "round": 1
+      },
+      {
+        "text": "🎁 Windfall! You received 7 cattle",
+        "type": "good",
+        "round": 1
+      },
+      {
+        "text": "👤 You travelled from ElPaso to DodgeCity (3 days)",
+        "type": "trade",
+        "round": 1
+      },
+      {
+        "text": "🤠 Rattlesnake Pete bought 8 cattle in DodgeCity",
+        "type": "ai",
+        "round": 1
+      },
+      {
+        "text": "─── Round 2 ───",
+        "type": "system",
+        "round": 2
+      },
+      {
+        "text": "📂 Loaded world.json",
         "type": "system",
         "round": 1
       },
       {
-        "text": "Map editor: link mode active — close this menu then interact with map",
+        "text": "─── Round 1 ───",
         "type": "system",
         "round": 1
       },
       {
-        "text": "Link: selected TinyTown — now click destination",
-        "type": "system",
+        "text": "🤠 Rattlesnake Pete sold 4 cattle for $16 in DodgeCity",
+        "type": "ai",
         "round": 1
       },
       {
-        "text": "Exited map editor mode",
-        "type": "system",
+        "text": "🤠 Rattlesnake Pete bought 8 grain in DodgeCity",
+        "type": "ai",
         "round": 1
       },
       {
-        "text": "Map editor: link mode active — close this menu then interact with map",
-        "type": "system",
+        "text": "🤠 Moose bought 5 cattle in Abilene",
+        "type": "ai",
         "round": 1
       },
       {
-        "text": "Link: selected Tombstone — now click destination",
-        "type": "system",
+        "text": "🤠 Moose set off for DodgeCity (2 days)",
+        "type": "ai",
         "round": 1
       },
       {
-        "text": "Link: selected TinyTown — now click destination",
+        "text": "─── Round 2 ───",
         "type": "system",
-        "round": 1
+        "round": 2
       },
       {
-        "text": "Exited map editor mode",
+        "text": "🤠 Rattlesnake Pete sold 2 cattle for $8 in DodgeCity",
+        "type": "ai",
+        "round": 2
+      },
+      {
+        "text": "🤠 Rattlesnake Pete bought 8 grain in DodgeCity",
+        "type": "ai",
+        "round": 2
+      },
+      {
+        "text": "🤠 Rattlesnake Pete set off for ElPaso (3 days)",
+        "type": "ai",
+        "round": 2
+      },
+      {
+        "text": "🔫 Rattlesnake Pete was ambushed! Lost 1 cattle",
+        "type": "danger",
+        "round": 2
+      },
+      {
+        "text": "🤠 Moose arrived in DodgeCity",
+        "type": "ai",
+        "round": 2
+      },
+      {
+        "text": "─── Round 3 ───",
         "type": "system",
-        "round": 1
+        "round": 3
+      },
+      {
+        "text": "🤠 Moose sold 5 grain for $25 in DodgeCity",
+        "type": "ai",
+        "round": 3
+      },
+      {
+        "text": "✨ Rattlesnake Pete found $34 on the trail",
+        "type": "good",
+        "round": 3
+      },
+      {
+        "text": "─── Round 4 ───",
+        "type": "system",
+        "round": 4
+      },
+      {
+        "text": "🤠 Moose sold 3 grain for $15 in DodgeCity",
+        "type": "ai",
+        "round": 4
+      },
+      {
+        "text": "🤠 Moose set off for Abilene (2 days)",
+        "type": "ai",
+        "round": 4
+      },
+      {
+        "text": "👤 You bought 6 grain for $24 in DodgeCity",
+        "type": "trade",
+        "round": 4
+      },
+      {
+        "text": "👤 You bought 1 grain for $5 in DodgeCity",
+        "type": "trade",
+        "round": 4
+      },
+      {
+        "text": "🔫 Ambush! You lost 7 grain",
+        "type": "danger",
+        "round": 4
+      },
+      {
+        "text": "⚔️ Bandits! You lost $1558",
+        "type": "danger",
+        "round": 4
+      },
+      {
+        "text": "👤 You travelled from DodgeCity to ElPaso (3 days)",
+        "type": "trade",
+        "round": 4
+      },
+      {
+        "text": "👤 You travelled from ElPaso to Cliffside (3 days)",
+        "type": "trade",
+        "round": 4
+      },
+      {
+        "text": "👤 You sold 6 grain for $72 in Cliffside",
+        "type": "trade",
+        "round": 4
+      },
+      {
+        "text": "👤 You sold 7 cattle for $49 in Cliffside",
+        "type": "trade",
+        "round": 4
+      },
+      {
+        "text": "👤 You bought 20 whiskey for $180 in Cliffside",
+        "type": "trade",
+        "round": 4
+      },
+      {
+        "text": "🔫 Ambush! You lost 10 whiskey",
+        "type": "danger",
+        "round": 4
+      },
+      {
+        "text": "⚔️ Bandits! You lost $1235",
+        "type": "danger",
+        "round": 4
+      },
+      {
+        "text": "👤 You travelled from Cliffside to ElPaso (3 days)",
+        "type": "trade",
+        "round": 4
+      },
+      {
+        "text": "⚔️ Bandits! You lost $988",
+        "type": "danger",
+        "round": 4
+      },
+      {
+        "text": "⚔️ Bandits! You lost $790",
+        "type": "danger",
+        "round": 4
+      },
+      {
+        "text": "👤 You travelled from ElPaso to Tombstone (2 days)",
+        "type": "trade",
+        "round": 4
+      },
+      {
+        "text": "👤 You sold 10 whiskey for $530 in Tombstone",
+        "type": "trade",
+        "round": 4
       }
     ],
     "stats": {
-      "tradesMade": 0,
-      "totalEarned": 0
+      "tradesMade": 6,
+      "totalEarned": 651
     }
   },
   "towns": {
@@ -75,29 +238,29 @@
       "goods": {
         "whiskey": {
           "base": 10,
-          "supply": 65,
+          "supply": 62,
           "demand": 51,
           "baseSupply": 65,
           "baseDemand": 58
         },
         "cattle": {
           "base": 8,
-          "supply": 54,
-          "demand": 47,
+          "supply": 50,
+          "demand": 48,
           "baseSupply": 60,
           "baseDemand": 49
         },
         "rifles": {
           "base": 10,
-          "supply": 43,
-          "demand": 53,
+          "supply": 42,
+          "demand": 54,
           "baseSupply": 49,
           "baseDemand": 52
         },
         "gold": {
           "base": 10,
           "supply": 49,
-          "demand": 50,
+          "demand": 49,
           "baseSupply": 50,
           "baseDemand": 50
         }
@@ -113,15 +276,15 @@
       "goods": {
         "cattle": {
           "base": 6,
-          "supply": 82,
-          "demand": 47,
+          "supply": 85,
+          "demand": 46,
           "baseSupply": 90,
           "baseDemand": 54
         },
         "grain": {
           "base": 5,
-          "supply": 60,
-          "demand": 69,
+          "supply": 65,
+          "demand": 65,
           "baseSupply": 79,
           "baseDemand": 58
         }
@@ -137,23 +300,22 @@
       "goods": {
         "whiskey": {
           "base": 15,
-          "supply": 28,
+          "supply": 33,
           "demand": 76,
           "baseSupply": 20,
           "baseDemand": 83
         },
         "rifles": {
           "base": 40,
-          "supply": 22,
-          "demand": 70,
+          "supply": 27,
+          "demand": 69,
           "baseSupply": 26,
           "baseDemand": 73
         }
       },
       "routes": {
         "Abilene": 4,
-        "ElPaso": 2,
-        "TinyTown": 2
+        "ElPaso": 2
       }
     },
     "ElPaso": {
@@ -162,24 +324,16 @@
       "goods": {
         "gold": {
           "base": 50,
-          "supply": 21,
-          "demand": 43,
+          "supply": 17,
+          "demand": 44,
           "baseSupply": 22,
           "baseDemand": 44
-        },
-        "rifles": {
-          "base": 20,
-          "baseSupply": 50,
-          "baseDemand": 75,
-          "supply": 49,
-          "demand": 50
         }
       },
       "routes": {
         "DodgeCity": 3,
         "Tombstone": 2,
-        "Cliffside": 3,
-        "TinyTown": 1
+        "Cliffside": 3
       }
     },
     "Cliffside": {
@@ -188,47 +342,28 @@
       "goods": {
         "whiskey": {
           "base": 10,
-          "supply": 33,
+          "supply": 31,
           "demand": 58,
           "baseSupply": 50,
           "baseDemand": 48
         },
         "cattle": {
           "base": 10,
-          "supply": 69,
-          "demand": 34,
+          "supply": 68,
+          "demand": 37,
           "baseSupply": 62,
           "baseDemand": 39
         },
         "grain": {
           "base": 10,
-          "supply": 57,
-          "demand": 60,
+          "supply": 60,
+          "demand": 61,
           "baseSupply": 59,
           "baseDemand": 59
         }
       },
       "routes": {
-        "ElPaso": 3,
-        "TinyTown": 3
-      }
-    },
-    "TinyTown": {
-      "x": 541.885780921349,
-      "y": 199.76923135610724,
-      "goods": {
-        "whiskey": {
-          "base": 10,
-          "baseSupply": 50,
-          "baseDemand": 50,
-          "supply": 50,
-          "demand": 50
-        }
-      },
-      "routes": {
-        "ElPaso": 1,
-        "Tombstone": 2,
-        "Cliffside": 3
+        "ElPaso": 3
       }
     }
   },
@@ -236,13 +371,16 @@
     {
       "id": "trader_1",
       "name": "Rattlesnake Pete",
-      "cash": 150,
+      "cash": 104,
       "startingCash": 150,
-      "location": "ElPaso",
-      "inventory": {},
-      "state": "idle",
-      "travelDaysRemaining": 0,
-      "travelDestination": null,
+      "location": "DodgeCity",
+      "inventory": {
+        "cattle": 1,
+        "grain": 16
+      },
+      "state": "travelling",
+      "travelDaysRemaining": 1,
+      "travelDestination": "ElPaso",
       "personality": {
         "preferredGoods": [
           "whiskey",
@@ -258,42 +396,40 @@
         "riskTolerance": 0.6
       },
       "stats": {
-        "totalEarned": 0,
-        "tradesMade": 0,
-        "eventsTriggered": 0
+        "totalEarned": 24,
+        "tradesMade": 5,
+        "eventsTriggered": 2
       }
     },
     {
       "id": "trader_1778125905323",
       "name": "Moose",
-      "cash": 150,
+      "cash": 155,
       "startingCash": 150,
       "location": "DodgeCity",
-      "inventory": {},
-      "state": "idle",
-      "travelDaysRemaining": 0,
-      "travelDestination": null,
+      "inventory": {
+        "grain": 2,
+        "cattle": 5
+      },
+      "state": "travelling",
+      "travelDaysRemaining": 2,
+      "travelDestination": "Abilene",
       "personality": {
         "preferredGoods": [
           "grain",
-          "cattle",
-          "gold",
-          "rifles",
-          "whiskey"
+          "cattle"
         ],
         "preferredTowns": [
           "Abilene",
           "DodgeCity",
-          "Tombstone",
-          "ElPaso",
-          "Cliffside"
+          "Tombstone"
         ],
         "aggression": 0.5,
         "riskTolerance": 0.5
       },
       "stats": {
-        "totalEarned": 0,
-        "tradesMade": 0,
+        "totalEarned": 40,
+        "tradesMade": 3,
         "eventsTriggered": 0
       }
     }
@@ -304,13 +440,13 @@
   },
   "turnState": {
     "phase": "player",
-    "roundNumber": 1,
+    "roundNumber": 4,
     "roundOrder": [
-      "player",
+      "trader_1778125905323",
       "trader_1",
-      "trader_1778125905323"
+      "player"
     ],
-    "playerIndex": 0
+    "playerIndex": 2
   },
-  "exportedAt": "2026-05-07T07:26:07.434Z"
+  "exportedAt": "2026-05-07T03:58:57.693Z"
 }

@@ -38,7 +38,7 @@ let traders = [
     location: "DodgeCity",
     inventory: {},
     state: "idle",
-    travelDaysRemaining: 30,
+    travelDaysRemaining: 0,
     travelDestination: null,
     personality: {
       preferredGoods: ["whiskey", "rifles"],
@@ -179,7 +179,13 @@ function startRound() {
 
   addLog("─── Round " + turnState.roundNumber + " ───", "system");
 
-
+  if (settings.aiEnabled) {
+    for (let i = 0; i < turnState.playerIndex; i++) {
+      const tid = turnState.roundOrder[i];
+      const trader = traders.find(function(t) { return t.id === tid; });
+      if (trader) runAITurn(trader);
+    }
+  }
 
   turnState.phase = "player";
   setButtonsEnabled(true);
@@ -188,11 +194,16 @@ function startRound() {
 }
 
 function endTurn() {
-  console.log(typeof advanceDays);
   if (turnState.phase === "ended") return;
-  setButtonsEnabled(true);
+  setButtonsEnabled(false);
 
-
+  if (settings.aiEnabled) {
+    for (let i = turnState.playerIndex + 1; i < turnState.roundOrder.length; i++) {
+      const tid = turnState.roundOrder[i];
+      const trader = traders.find(function(t) { return t.id === tid; });
+      if (trader) runAITurn(trader);
+    }
+  }
 
   processTravellingTraders();
   runPriceStabilisation();
@@ -574,62 +585,6 @@ function playerGoodEvent() {
   }
 }
 
-// ================= TIME SYSTEM =================
-function advanceDay() {
-
-  console.log("ADVANCING DAY");
-  // AI movement + travel progress
-  processTravellingTraders();
-
-  // AI actions
-  if (settings.aiEnabled) {
-
-  traders.forEach(function(trader) {
-    processTravellingTraders();
-    runAIDay(trader);
-
-  });
-
-}
-
-  // Economy simulation
-  runPriceStabilisation();
-  updateMarket();
-
-  // Advance time
-  game.day++;
-
-  // Safety clamp
-  if (game.day > game.maxDays) {
-    game.day = game.maxDays + 1;
-  }
-
-  // Update UI
-  updateTurnUI();
-  render();
-}
-
-function advanceDays(days) {
-console.log("ADVANCE DAYS", days);
-  for (let i = 0; i < days; i++) {
-
-    // Player travel events
-    if (game.eventsEnabled) {
-      playerRandomEvent();
-    }
-
-    advanceDay();
-
-    // Stop if game ended
-    if (game.day > game.maxDays) {
-      showLeaderboard();
-      return false;
-    }
-  }
-
-  return true;
-}
-
 // ================= MARKET =================
 function updateMarket() {
   for (const t in towns)
@@ -651,170 +606,6 @@ function runPriceStabilisation() {
 }
 
 // ================= AI TRADER SYSTEM =================
-function runAIDay(trader) {
-console.log("AI DAY:", trader.name, trader.state);
-  if (!settings.aiEnabled) return;
-
-  if (trader.state === "broke") return;
-
-  // =====================================================
-  // TRAVELLING
-  // =====================================================
-
-  if (trader.state === "travelling") return;
-
-  const town = towns[trader.location];
-
-  if (!town) return;
-
-  // =====================================================
-  // SELL FIRST
-  // =====================================================
-
-  const inventoryGoods = Object.keys(trader.inventory)
-    .filter(function(g) {
-      return trader.inventory[g] > 0 &&
-             getPrice(g, trader.location) !== null;
-    });
-
-  if (inventoryGoods.length > 0) {
-
-    const g =
-      inventoryGoods[Math.floor(Math.random() * inventoryGoods.length)];
-
-    const qty = Math.max(
-      1,
-      Math.ceil(trader.inventory[g] * 0.5)
-    );
-
-    const price = getPrice(g, trader.location);
-
-    const earned = qty * price;
-
-    trader.cash += earned;
-
-    trader.stats.totalEarned += earned;
-
-    trader.stats.tradesMade++;
-
-    trader.inventory[g] -= qty;
-
-    if (trader.inventory[g] <= 0) {
-      delete trader.inventory[g];
-    }
-
-    if (town.goods[g]) {
-
-      town.goods[g].supply += qty;
-
-      town.goods[g].demand =
-        Math.max(1, town.goods[g].demand - Math.ceil(qty * 0.5));
-    }
-
-    addLog(
-      "🤠 " + trader.name +
-      " sold " + qty + " " + g +
-      " for $" + earned +
-      " in " + trader.location,
-      "ai"
-    );
-
-    return;
-  }
-
-  // =====================================================
-  // BUY
-  // =====================================================
-
-  const availableGoods = Object.keys(town.goods);
-
-  if (availableGoods.length > 0) {
-
-    const good = pickPreferredGood(
-      availableGoods,
-      trader.personality.preferredGoods
-    );
-
-    const price = getPrice(good, trader.location);
-
-    if (price && trader.cash >= price) {
-
-      const qty = Math.max(
-        1,
-        Math.min(
-          6,
-          Math.floor(
-            trader.cash * 0.3 / price
-          )
-        )
-      );
-
-      trader.cash -= price * qty;
-
-      trader.inventory[good] =
-        (trader.inventory[good] || 0) + qty;
-
-      trader.stats.tradesMade++;
-
-      town.goods[good].supply =
-        Math.max(1, town.goods[good].supply - qty);
-
-      town.goods[good].demand +=
-        Math.ceil(qty * 0.5);
-
-      addLog(
-        "🤠 " + trader.name +
-        " bought " + qty + " " + good +
-        " in " + trader.location,
-        "ai"
-      );
-
-      return;
-    }
-  }
-
-  // =====================================================
-  // TRAVEL
-  // =====================================================
-
-  if (Math.random() < trader.personality.riskTolerance) {
-
-    const destinations = Object.keys(town.routes);
-
-    if (destinations.length > 0) {
-
-      const preferred = destinations.filter(function(d) {
-        return trader.personality.preferredTowns.includes(d);
-      });
-
-      const pool =
-        preferred.length > 0
-          ? preferred
-          : destinations;
-
-      const dest =
-        pool[Math.floor(Math.random() * pool.length)];
-
-      const dist = town.routes[dest];
-
-      trader.state = "travelling";
-
-      trader.travelDaysRemaining = dist;
-
-      trader.travelDestination = dest;
-
-      addLog(
-        "🤠 " + trader.name +
-        " departed for " + dest +
-        " (" + dist + " days)",
-        "ai"
-      );
-    }
-  }
-
-  checkTraderBroke(trader);
-}
-
 function runAITurn(trader) {
   if (!settings.aiEnabled || trader.state === "broke" || trader.state === "travelling") return;
 
@@ -883,42 +674,44 @@ function pickPreferredGood(available, preferred) {
 }
 
 function processTravellingTraders() {
-
   traders.forEach(function(trader) {
-
     if (trader.state !== "travelling") return;
-
     trader.travelDaysRemaining--;
 
-    // Still travelling
-    if (trader.travelDaysRemaining > 0) {
-
-      addLog(
-        "🐎 " + trader.name +
-        " travelling to " +
-        trader.travelDestination +
-        " (" + trader.travelDaysRemaining +
-        " days left)",
-        "travel"
-      );
-
-      return;
+    if (game.eventsEnabled) {
+      const roll = Math.random();
+      if (roll < game.eventChances.danger) {
+        trader.stats.eventsTriggered++;
+        if (Math.random() < 0.5) {
+          const loss = Math.floor(trader.cash * 0.2);
+          trader.cash -= loss;
+          addLog("⚔️ " + trader.name + " was robbed! Lost $" + loss, "danger");
+        } else {
+          const goods = Object.keys(trader.inventory).filter(function(g) { return trader.inventory[g] > 0; });
+          if (goods.length) {
+            const g    = goods[Math.floor(Math.random() * goods.length)];
+            const lost = Math.ceil(trader.inventory[g] * 0.5);
+            trader.inventory[g] -= lost;
+            if (trader.inventory[g] <= 0) delete trader.inventory[g];
+            addLog("🔫 " + trader.name + " was ambushed! Lost " + lost + " " + g, "danger");
+          }
+        }
+      } else if (roll < game.eventChances.danger + game.eventChances.good) {
+        trader.stats.eventsTriggered++;
+        const gain = 10 + Math.floor(Math.random() * 30);
+        trader.cash += gain;
+        addLog("✨ " + trader.name + " found $" + gain + " on the trail", "good");
+      }
     }
 
-    // ARRIVAL
-    trader.location = trader.travelDestination;
+    if (trader.travelDaysRemaining <= 0) {
+      trader.location         = trader.travelDestination;
+      trader.travelDestination = null;
+      trader.state            = "idle";
+      addLog("🤠 " + trader.name + " arrived in " + trader.location, "ai");
+    }
 
-    trader.travelDestination = null;
-
-    trader.travelDaysRemaining = 0;
-
-    trader.state = "idle";
-
-    addLog(
-      "📍 " + trader.name +
-      " arrived in " + trader.location,
-      "travel"
-    );
+    checkTraderBroke(trader);
   });
 }
 
