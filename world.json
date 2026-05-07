@@ -1,0 +1,316 @@
+{
+  "game": {
+    "day": 1,
+    "maxDays": 20,
+    "cash": 200,
+    "location": "Abilene",
+    "capacity": 50,
+    "eventsEnabled": true,
+    "eventChances": {
+      "danger": 0.15000000000000002,
+      "good": 0.2
+    },
+    "inventory": {
+      "whiskey": 5
+    },
+    "zoom": 1.6000000000000005,
+    "offsetX": 0.7365967365967663,
+    "offsetY": -16.276923076923197,
+    "activityLog": [
+      {
+        "text": "─── Round 1 ───",
+        "type": "system",
+        "round": 1
+      },
+      {
+        "text": "Map editor: addTown mode active — close this menu then interact with map",
+        "type": "system",
+        "round": 1
+      },
+      {
+        "text": "Map editor: link mode active — close this menu then interact with map",
+        "type": "system",
+        "round": 1
+      },
+      {
+        "text": "Link: selected TinyTown — now click destination",
+        "type": "system",
+        "round": 1
+      },
+      {
+        "text": "Exited map editor mode",
+        "type": "system",
+        "round": 1
+      },
+      {
+        "text": "Map editor: link mode active — close this menu then interact with map",
+        "type": "system",
+        "round": 1
+      },
+      {
+        "text": "Link: selected Tombstone — now click destination",
+        "type": "system",
+        "round": 1
+      },
+      {
+        "text": "Link: selected TinyTown — now click destination",
+        "type": "system",
+        "round": 1
+      },
+      {
+        "text": "Exited map editor mode",
+        "type": "system",
+        "round": 1
+      }
+    ],
+    "stats": {
+      "tradesMade": 0,
+      "totalEarned": 0
+    }
+  },
+  "towns": {
+    "Abilene": {
+      "x": 100,
+      "y": 200,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "supply": 65,
+          "demand": 51,
+          "baseSupply": 65,
+          "baseDemand": 58
+        },
+        "cattle": {
+          "base": 8,
+          "supply": 54,
+          "demand": 47,
+          "baseSupply": 60,
+          "baseDemand": 49
+        },
+        "rifles": {
+          "base": 10,
+          "supply": 43,
+          "demand": 53,
+          "baseSupply": 49,
+          "baseDemand": 52
+        },
+        "gold": {
+          "base": 10,
+          "supply": 49,
+          "demand": 50,
+          "baseSupply": 50,
+          "baseDemand": 50
+        }
+      },
+      "routes": {
+        "DodgeCity": 2,
+        "Tombstone": 4
+      }
+    },
+    "DodgeCity": {
+      "x": 200,
+      "y": 120,
+      "goods": {
+        "cattle": {
+          "base": 6,
+          "supply": 82,
+          "demand": 47,
+          "baseSupply": 90,
+          "baseDemand": 54
+        },
+        "grain": {
+          "base": 5,
+          "supply": 60,
+          "demand": 69,
+          "baseSupply": 79,
+          "baseDemand": 58
+        }
+      },
+      "routes": {
+        "Abilene": 2,
+        "ElPaso": 3
+      }
+    },
+    "Tombstone": {
+      "x": 320,
+      "y": 260,
+      "goods": {
+        "whiskey": {
+          "base": 15,
+          "supply": 28,
+          "demand": 76,
+          "baseSupply": 20,
+          "baseDemand": 83
+        },
+        "rifles": {
+          "base": 40,
+          "supply": 22,
+          "demand": 70,
+          "baseSupply": 26,
+          "baseDemand": 73
+        }
+      },
+      "routes": {
+        "Abilene": 4,
+        "ElPaso": 2,
+        "TinyTown": 2
+      }
+    },
+    "ElPaso": {
+      "x": 420,
+      "y": 150,
+      "goods": {
+        "gold": {
+          "base": 50,
+          "supply": 21,
+          "demand": 43,
+          "baseSupply": 22,
+          "baseDemand": 44
+        },
+        "rifles": {
+          "base": 20,
+          "baseSupply": 50,
+          "baseDemand": 75,
+          "supply": 49,
+          "demand": 50
+        }
+      },
+      "routes": {
+        "DodgeCity": 3,
+        "Tombstone": 2,
+        "Cliffside": 3,
+        "TinyTown": 1
+      }
+    },
+    "Cliffside": {
+      "x": 775,
+      "y": 98,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "supply": 33,
+          "demand": 58,
+          "baseSupply": 50,
+          "baseDemand": 48
+        },
+        "cattle": {
+          "base": 10,
+          "supply": 69,
+          "demand": 34,
+          "baseSupply": 62,
+          "baseDemand": 39
+        },
+        "grain": {
+          "base": 10,
+          "supply": 57,
+          "demand": 60,
+          "baseSupply": 59,
+          "baseDemand": 59
+        }
+      },
+      "routes": {
+        "ElPaso": 3,
+        "TinyTown": 3
+      }
+    },
+    "TinyTown": {
+      "x": 541.885780921349,
+      "y": 199.76923135610724,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 50,
+          "demand": 50
+        }
+      },
+      "routes": {
+        "ElPaso": 1,
+        "Tombstone": 2,
+        "Cliffside": 3
+      }
+    }
+  },
+  "traders": [
+    {
+      "id": "trader_1",
+      "name": "Rattlesnake Pete",
+      "cash": 150,
+      "startingCash": 150,
+      "location": "ElPaso",
+      "inventory": {},
+      "state": "idle",
+      "travelDaysRemaining": 0,
+      "travelDestination": null,
+      "personality": {
+        "preferredGoods": [
+          "whiskey",
+          "rifles",
+          "gold"
+        ],
+        "preferredTowns": [
+          "Tombstone",
+          "ElPaso",
+          "DodgeCity"
+        ],
+        "aggression": 0.8,
+        "riskTolerance": 0.6
+      },
+      "stats": {
+        "totalEarned": 0,
+        "tradesMade": 0,
+        "eventsTriggered": 0
+      }
+    },
+    {
+      "id": "trader_1778125905323",
+      "name": "Moose",
+      "cash": 150,
+      "startingCash": 150,
+      "location": "DodgeCity",
+      "inventory": {},
+      "state": "idle",
+      "travelDaysRemaining": 0,
+      "travelDestination": null,
+      "personality": {
+        "preferredGoods": [
+          "grain",
+          "cattle",
+          "gold",
+          "rifles",
+          "whiskey"
+        ],
+        "preferredTowns": [
+          "Abilene",
+          "DodgeCity",
+          "Tombstone",
+          "ElPaso",
+          "Cliffside"
+        ],
+        "aggression": 0.5,
+        "riskTolerance": 0.5
+      },
+      "stats": {
+        "totalEarned": 0,
+        "tradesMade": 0,
+        "eventsTriggered": 0
+      }
+    }
+  ],
+  "settings": {
+    "stabilisationRate": 0.05,
+    "aiEnabled": true
+  },
+  "turnState": {
+    "phase": "player",
+    "roundNumber": 1,
+    "roundOrder": [
+      "player",
+      "trader_1",
+      "trader_1778125905323"
+    ],
+    "playerIndex": 0
+  },
+  "exportedAt": "2026-05-07T07:26:07.434Z"
+}

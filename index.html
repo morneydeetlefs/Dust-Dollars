@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dust & Dollars</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header id="header">
+  <span id="turn-indicator">👤 Your Turn</span>
+  <span id="day-counter">Day 1/30</span>
+</header>
+
+    <div id="map">
+      <div id="map-inner"></div>
+    </div>
+
+    <main id="main"></main>
+    <div id="day-counter" style="font-weight: bold;"></div>
+
+
+    <footer>
+      <button onclick="openBuy()">Buy</button>
+      <button onclick="openSell()">Sell</button>
+      <button onclick="openTravel()">Travel</button>
+      <button onclick="openMarket()">Market</button>
+      <button onclick="endTurn()">End Turn</button>
+      <button onclick="openEditor()">⚙</button>
+      <span id="turn-indicator"></span>
+    </footer>
+
+    <div id="modal" class="modal hidden"></div>
+
+    <!-- JS -->
+    <script src="game.js"></script>
+  </body>
+</html>
