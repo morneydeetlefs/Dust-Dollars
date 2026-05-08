@@ -59,7 +59,7 @@ let turnState = {
 };
 
 // ================= MAP EDITOR =================
-let mapEditor = { mode: null, selected: null };
+let mapEditor = { mode: null, selected: null, draggedTown: null };
 
 // ================= TOWNS =================
 let towns = {
@@ -194,6 +194,7 @@ function startRound() {
 }
 
 function endTurn() {
+  //console.log("trader=",trader);
   if (turnState.phase === "ended") return;
   setButtonsEnabled(false);
 
@@ -266,9 +267,21 @@ function render() {
   main.innerHTML = market + inv;
 }
 
+function updateMapTransform() {
+  mapInner.style.transform = "translate(" + game.offsetX + "px, " + game.offsetY + "px) scale(" + game.zoom + ")";
+}
+
 function renderMap() {
   mapInner.innerHTML = "";
-  mapInner.style.transform = "translate(" + game.offsetX + "px, " + game.offsetY + "px) scale(" + game.zoom + ")";
+
+  // Add background image centered at (0,0)
+  const bg = document.createElement("img");
+  bg.id = "map-bg";
+  bg.src = "map.png";
+  bg.style.cssText = "position:absolute; left:0; top:0; transform:translate(-50%,-50%); z-index:-1; pointer-events:none;";
+  mapInner.appendChild(bg);
+
+  updateMapTransform();
 
   const drawn = new Set();
   for (const t in towns) {
@@ -279,12 +292,19 @@ function renderMap() {
       drawn.add(key);
       const to = towns[r];
       if (!to) continue;
+      const routeData = from.routes[r];
       const dx = to.x - from.x, dy = to.y - from.y;
       const len = Math.sqrt(dx * dx + dy * dy);
       const ang = (Math.atan2(dy, dx) * 180) / Math.PI;
+
+      // Determine color based on hazard/reward
+      let color = "#555";
+      if (routeData.hazard > 0.1) color = "#f66";
+      else if (routeData.reward > 0.1) color = "#6f6";
+
       const line = document.createElement("div");
-      line.style.cssText = "position:absolute;width:" + len + "px;height:2px;background:#555;" +
-        "left:" + from.x + "px;top:" + from.y + "px;transform-origin:0 0;transform:rotate(" + ang + "deg);";
+      line.style.cssText = "position:absolute;width:" + len + "px;height:2px;background:" + color + ";" +
+        "left:" + from.x + "px;top:" + from.y + "px;transform-origin:0 0;transform:rotate(" + ang + "deg);opacity:0.6;";
       mapInner.appendChild(line);
     }
   }
@@ -296,7 +316,18 @@ function renderMap() {
     node.style.cssText = "position:absolute;left:" + town.x + "px;top:" + town.y + "px;" +
       "transform:translate(-50%,-50%);padding:4px 6px;" +
       "background:" + (t === game.location ? "#6a5cff" : "#333") + ";" +
-      "border-radius:6px;cursor:pointer;font-size:12px;color:white;border:1px solid #555;z-index:5;";
+      "border-radius:6px;cursor:" + (mapEditor.mode === "move" ? "move" : "pointer") + ";font-size:12px;color:white;border:1px solid #555;z-index:5;" +
+      "user-select:none;";
+
+    node.onmousedown = (function(townName) {
+      return function(e) {
+        if (mapEditor.mode === "move") {
+          e.stopPropagation();
+          mapEditor.draggedTown = townName;
+        }
+      };
+    })(t);
+
     node.onclick = (function(townName) {
       return function(e) {
         e.stopPropagation();
@@ -307,8 +338,22 @@ function renderMap() {
           } else {
             const dist = parseInt(prompt("Distance in days from " + mapEditor.selected + " to " + townName + "?"));
             if (!isNaN(dist) && dist > 0) {
-              towns[mapEditor.selected].routes[townName] = dist;
-              towns[townName].routes[mapEditor.selected] = dist;
+              const r = { dist: dist, hazard: 0, reward: 0 };
+              towns[mapEditor.selected].routes[townName] = r;
+              towns[townName].routes[mapEditor.selected] = r;
+            }
+            mapEditor.selected = null;
+            render();
+          }
+        } else if (mapEditor.mode === "unlink") {
+          if (!mapEditor.selected) {
+            mapEditor.selected = townName;
+            addLog("Unlink: selected " + townName + " — now click a connected town to remove link", "system");
+          } else {
+            if (towns[mapEditor.selected].routes[townName]) {
+              delete towns[mapEditor.selected].routes[townName];
+              delete towns[townName].routes[mapEditor.selected];
+              addLog("Removed link between " + mapEditor.selected + " and " + townName, "system");
             }
             mapEditor.selected = null;
             render();
@@ -377,13 +422,24 @@ map.onmousedown = function(e) {
   isDragging = true; lastX = e.clientX; lastY = e.clientY;
 };
 window.onmousemove = function(e) {
+  if (mapEditor.draggedTown) {
+    const rect = mapInner.getBoundingClientRect();
+    const town = towns[mapEditor.draggedTown];
+    town.x = (e.clientX - rect.left) / game.zoom;
+    town.y = (e.clientY - rect.top) / game.zoom;
+    renderMap();
+    return;
+  }
   if (!isDragging) return;
   game.offsetX += e.clientX - lastX;
   game.offsetY += e.clientY - lastY;
   lastX = e.clientX; lastY = e.clientY;
-  renderMap();
+  updateMapTransform();
 };
-window.onmouseup = function() { isDragging = false; };
+window.onmouseup = function() {
+  isDragging = false;
+  mapEditor.draggedTown = null;
+};
 map.onwheel = function(e) {
   e.preventDefault();
   const newZoom = Math.min(Math.max(0.5, game.zoom - e.deltaY * 0.001), 3);
@@ -393,7 +449,7 @@ map.onwheel = function(e) {
   game.zoom     = newZoom;
   game.offsetX  = mx - wx * game.zoom;
   game.offsetY  = my - wy * game.zoom;
-  renderMap();
+  updateMapTransform();
 };
 
 // ================= BUY =================
@@ -503,8 +559,13 @@ function selectSell(g) {
 function openTravel() {
   const routes = towns[game.location].routes;
   let html = "<b>Travel</b>";
-  for (const t in routes)
-    html += "<div class='item' onclick=\"openTravelTo('" + t + "')\">" + t + " (" + routes[t] + " days)</div>";
+  for (const t in routes) {
+    const r = routes[t];
+    let info = "";
+    if (r.hazard > 0) info = " <span style='color:#f66'>(Dangerous)</span>";
+    if (r.reward > 0) info = " <span style='color:#6f6'>(Prosperous)</span>";
+    html += "<div class='item' onclick=\"openTravelTo('" + t + "')\">" + t + " (" + r.dist + " days)" + info + "</div>";
+  }
   html += "<button onclick='closeModal()'>Cancel</button>";
   showModal(html);
 }
@@ -512,9 +573,10 @@ function openTravel() {
 function openTravelTo(target) {
   const routes = towns[game.location].routes;
   if (!routes[target]) return;
-  const dist = routes[target];
+  const dist = routes[target].dist;
   if (game.day + dist > game.maxDays) {
     showModal("<b>Too far!</b><div>Only " + (game.maxDays - game.day) + " days remaining.</div><button onclick='closeModal()'>Back</button>");
+    showLeaderboard()
     return;
   }
   showModal(
@@ -527,22 +589,102 @@ function openTravelTo(target) {
 }
 
 function confirmTravel(target, dist) {
+  const route = towns[game.location].routes[target];
   const prev = game.location;
   game.location = target;
-  game.day += dist - 1; // endTurn adds the final +1
+  game.day += dist - 1;
+
   for (let i = 0; i < dist; i++) {
-    if (game.eventsEnabled) playerRandomEvent();
+    if (game.eventsEnabled) playerRandomEvent(route);
+     if (settings.aiEnabled) {
+    //for (let ii = turnState.playerIndex + 1; ii < turnState.roundOrder.length; ii++) {
+
+        let nrOfAi = traders.filter(t => t.state !== "broke").length;
+    for ( let t = 0; t < nrOfAi + 1; t++)  {
+
+      const tid = turnState.roundOrder[t];
+      const trader = traders.find(function(t) { return t.id === tid; });
+
+      if (trader) runAITurn(trader);
+      //console.log(trader);
+    }
+    }
+
+
+
   }
   addLog("👤 You travelled from " + prev + " to " + target + " (" + dist + " days)", "trade");
   closeModal(); render();
 }
 
 // ================= PLAYER EVENTS =================
-function playerRandomEvent() {
+function playerRandomEvent(routeData) {
   const roll = Math.random();
-  const d = game.eventChances.danger, gd = game.eventChances.good;
-  if (roll < d) playerDangerEvent();
-  else if (roll < d + gd) playerGoodEvent();
+  let d = game.eventChances.danger;
+  let gd = game.eventChances.good;
+
+  if (routeData) {
+    d = Math.min(1, d + (routeData.hazard || 0));
+    gd = Math.min(1, gd + (routeData.reward || 0));
+  }
+
+  if (roll < d) {
+    if (routeData && routeData.payloads && routeData.payloads.hazard && routeData.payloads.hazard.length > 0) {
+      processSpecificEvent(routeData.payloads.hazard, "hazard");
+    } else {
+      playerDangerEvent();
+    }
+  } else if (roll < d + gd) {
+    if (routeData && routeData.payloads && routeData.payloads.reward && routeData.payloads.reward.length > 0) {
+      processSpecificEvent(routeData.payloads.reward, "reward");
+    } else {
+      playerGoodEvent();
+    }
+  }
+
+  //console.log("trader=",trader);
+  if (turnState.phase === "ended") return;
+  setButtonsEnabled(false);
+}
+
+function processSpecificEvent(payloads, type) {
+  let report = type === 'hazard' ? "⚠️ Route Hazard! " : "✨ Route Reward! ";
+
+  payloads.forEach(p => {
+    if (p.good === "cash") {
+      if (type === 'hazard') {
+        const loss = Math.floor(game.cash * p.val);
+        game.cash -= loss;
+        report += "Lost $" + loss + ". ";
+      } else {
+        game.cash += p.val;
+        report += "Gained $" + p.val + ". ";
+      }
+    } else {
+      const g = p.good;
+      if (type === 'hazard') {
+        if (game.inventory[g]) {
+          const loss = Math.ceil(game.inventory[g] * p.val);
+          game.inventory[g] -= loss;
+          if (game.inventory[g] <= 0) delete game.inventory[g];
+          report += "Lost " + loss + " " + g + ". ";
+        }
+      } else {
+        const space = game.capacity - currentInventory();
+        const gain = Math.min(p.val, space);
+        if (gain > 0) {
+          game.inventory[g] = (game.inventory[g] || 0) + gain;
+          report += "Gained " + gain + " " + g + (gain < p.val ? " (no more room)" : "") + ". ";
+        } else {
+          report += "Found " + g + " but had no room. ";
+        }
+      }
+    }
+  });
+
+  addLog(report, type === 'hazard' ? "danger" : "good");
+  alert(report);
+  render();
 }
 
 function playerDangerEvent() {
@@ -607,8 +749,15 @@ function runPriceStabilisation() {
 
 // ================= AI TRADER SYSTEM =================
 function runAITurn(trader) {
-  if (!settings.aiEnabled || trader.state === "broke" || trader.state === "travelling") return;
+//console.log("ai enabled = ",!settings.aiEnabled," state = ",trader.state);
 
+  if (!settings.aiEnabled || trader.state === "broke") return;
+  if (trader.state === "travelling") processTravellingTraders();
+    //console.log("traveling trader = ",trader.name) ;
+
+
+
+//console.log("trader state = ",trader.state);
   const town = towns[trader.location];
   const availableGoods = Object.keys(town.goods);
 
@@ -674,7 +823,10 @@ function pickPreferredGood(available, preferred) {
 }
 
 function processTravellingTraders() {
+//console.log("processing travel for ",trader.name);
   traders.forEach(function(trader) {
+    //("processing travel for ",trader.name);
+
     if (trader.state !== "travelling") return;
     trader.travelDaysRemaining--;
 
@@ -753,7 +905,7 @@ function getDistance(from, to) {
     visited.add(cur.town);
     const routes = towns[cur.town] ? towns[cur.town].routes : {};
     for (const next in routes)
-      queue.push({ town: next, dist: cur.dist + routes[next] });
+      queue.push({ town: next, dist: cur.dist + (routes[next].dist || 0) });
   }
   return "?";
 }
@@ -794,7 +946,8 @@ function showLeaderboard() {
 function resetGame() {
   game.day = 1; game.cash = 200;
   game.inventory = { whiskey: 5 };
-  game.location = "Abilene";
+  // Safety: Fallback if Abilene doesn't exist in the map
+  game.location = towns["Abilene"] ? "Abilene" : Object.keys(towns)[0];
   game.activityLog = [];
   game.stats = { tradesMade: 0, totalEarned: 0 };
   traders.forEach(function(t) {
@@ -825,12 +978,121 @@ function openEditor() {
 function editorMapMenu() {
   showModal(
     "<b>🗺️ Map Management</b>" +
+    "<div class='item' onclick=\"setMapMode('move')\">🖱️ Move Towns (drag towns)</div>" +
     "<div class='item' onclick=\"setMapMode('addTown')\">➕ Add Town (click map)</div>" +
     "<div class='item' onclick=\"setMapMode('link')\">🔗 Link Towns (click 2 towns)</div>" +
+    "<div class='item' onclick='editorRouteProps()'>🛠️ Route Hazards/Rewards</div>" +
+    "<div class='item' onclick='editorDeleteLink()'>✂️ Remove Link</div>" +
     "<div class='item' onclick='editorDeleteTown()'>❌ Delete Town</div>" +
     "<div class='item' onclick=\"setMapMode(null)\">🚫 Exit Map Edit Mode</div>" +
     "<button onclick='openEditor()'>Back</button>"
   );
+}
+
+function editorRouteProps() {
+  let html = "<b>Select Start Town</b>";
+  for (const t in towns) {
+    if (Object.keys(towns[t].routes).length > 0) {
+      html += "<div class='item' onclick=\"editorRoutePropsDest('" + t + "')\">" + t + "</div>";
+    }
+  }
+  html += "<button onclick='editorMapMenu()'>Back</button>";
+  showModal(html);
+}
+
+function editorRoutePropsDest(start) {
+  let html = "<b>Select Route from " + start + "</b>";
+  for (const dest in towns[start].routes) {
+    html += "<div class='item' onclick=\"editorEditRoute('" + start + "','" + dest + "')\">To " + dest + "</div>";
+  }
+  html += "<button onclick='editorRouteProps()'>Back</button>";
+  showModal(html);
+}
+
+function editorEditRoute(s, d) {
+  const r = towns[s].routes[d];
+  showModal(
+    "<b>Route: " + s + " ↔ " + d + "</b>" +
+    "<div class='item' onclick=\"editorSetRouteVal('" + s + "','" + d + "','dist')\">Distance: " + r.dist + " days</div>" +
+    "<div class='item' onclick=\"editorSetRouteVal('" + s + "','" + d + "','hazard')\">Hazard Chance Bonus: +" + (r.hazard * 100).toFixed(0) + "%</div>" +
+    "<div class='item' onclick=\"editorSetRouteVal('" + s + "','" + d + "','reward')\">Reward Chance Bonus: +" + (r.reward * 100).toFixed(0) + "%</div>" +
+    "<div class='item' onclick=\"editorRoutePayload('" + s + "','" + d + "','hazard')\">⚠️ Hazard Specifics</div>" +
+    "<div class='item' onclick=\"editorRoutePayload('" + s + "','" + d + "','reward')\">✨ Reward Specifics</div>" +
+    "<button onclick=\"editorRoutePropsDest('" + s + "')\">Back</button>"
+  );
+}
+
+function editorRoutePayload(s, d, type) {
+  const r = towns[s].routes[d];
+  if (!r.payloads) r.payloads = { hazard: [], reward: [] };
+  const list = r.payloads[type];
+
+  let html = "<b>" + (type === 'hazard' ? "⚠️ Hazard" : "✨ Reward") + " Contents</b><br>";
+  html += "<div style='font-size:10px; color:#aaa; margin-bottom:5px;'>Hazards use % (0.1 = 10%), Rewards use qty.</div>";
+
+  list.forEach((p, i) => {
+    html += "<div class='item' style='display:flex; justify-content:space-between;'>" +
+            "<span>" + p.good + ": " + (type === 'hazard' ? (p.val * 100).toFixed(0) + "%" : p.val) + "</span>" +
+            "<span style='color:#f66; cursor:pointer;' onclick='removeRoutePayload(\""+s+"\",\""+d+"\",\""+type+"\","+i+")'>[X]</span></div>";
+  });
+
+  html += "<button onclick='addRoutePayloadPrompt(\""+s+"\",\""+d+"\",\""+type+"\")'>+ Add Item</button>";
+  html += "<button onclick='editorEditRoute(\""+s+"\",\""+d+"\")'>Back</button>";
+  showModal(html);
+}
+
+window.removeRoutePayload = function(s, d, type, i) {
+  towns[s].routes[d].payloads[type].splice(i, 1);
+  towns[d].routes[s].payloads[type] = [...towns[s].routes[d].payloads[type]];
+  editorRoutePayload(s, d, type);
+};
+
+window.addRoutePayloadPrompt = function(s, d, type) {
+  const good = prompt("Good name (e.g. whiskey, gold, rifles, cash)?");
+  if (!good) return;
+  const val = parseFloat(prompt(type === 'hazard' ? "Percentage to lose (e.g. 0.5 for 50%)?" : "Quantity to gain?"));
+  if (isNaN(val)) return;
+
+  if (!towns[s].routes[d].payloads) towns[s].routes[d].payloads = { hazard: [], reward: [] };
+  towns[s].routes[d].payloads[type].push({ good: good.toLowerCase(), val: val });
+  towns[d].routes[s].payloads[type] = [...towns[s].routes[d].payloads[type]];
+  editorRoutePayload(s, d, type);
+};
+
+function editorSetRouteVal(s, d, field) {
+  let val = towns[s].routes[d][field];
+  const step = field === 'dist' ? 1 : 0.05;
+  function renderR() {
+    showModal(
+      "<b>Set " + field + "</b>" +
+      "<div class='qty'>" +
+      "<button onclick='chgR(-" + (step*5) + ")'>--" + (step*5) + "</button>" +
+      "<button onclick='chgR(-" + step + ")'>-" + step + "</button>" +
+      "<div>" + (field === 'dist' ? val : (val * 100).toFixed(0) + "%") + "</div>" +
+      "<button onclick='chgR(" + step + ")'>+" + step + "</button>" +
+      "<button onclick='chgR(" + (step*5) + ")'>++" + (step*5) + "</button>" +
+      "</div>" +
+      "<button class='confirm' onclick='cfR()'>Save</button>" +
+      "<button onclick=\"editorEditRoute('" + s + "','" + d + "')\">Back</button>"
+    );
+  }
+  window.chgR = function(v) {
+    val = Math.max(0, +(val + v).toFixed(2));
+    if (field === 'dist') val = Math.max(1, Math.round(val));
+    renderR();
+  };
+  window.cfR = function() {
+    towns[s].routes[d][field] = val;
+    towns[d].routes[s][field] = val; // Keep routes symmetrical
+    editorEditRoute(s, d);
+    renderMap();
+  };
+  renderR();
+}
+
+function editorDeleteLink() {
+  setMapMode('unlink');
+  addLog("Unlink mode: Click a town to see its routes, then click a destination to remove that link.", "system");
 }
 
 function setMapMode(mode) {
@@ -1320,62 +1582,335 @@ function confirmDeleteTrader(i) {
 function deleteTrader(i) { traders.splice(i, 1); editorTradersMenu(); render(); }
 
 // ================= IMPORT / EXPORT =================
-function exportWorld() {
-  const data = {
-    game:      JSON.parse(JSON.stringify(game)),
-    towns:     JSON.parse(JSON.stringify(towns)),
-    traders:   JSON.parse(JSON.stringify(traders)),
-    settings:  JSON.parse(JSON.stringify(settings)),
-    turnState: JSON.parse(JSON.stringify(turnState)),
+
+function deepClone(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+function createSaveData() {
+
+  const gameData = deepClone(game);
+
+  // remove temporary runtime data
+  gameData.activityLog = [];
+
+  return {
+    version: 1,
+
     exportedAt: new Date().toISOString(),
+
+    game: gameData,
+    towns: deepClone(towns),
+    traders: deepClone(traders),
+    settings: deepClone(settings),
+    turnState: deepClone(turnState),
   };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "world.json";
-  a.click();
+}
+
+function validateWorld() {
+
+  // ---------- GAME ----------
+  if (!game.inventory) game.inventory = {};
+  if (!game.stats) {
+    game.stats = {
+      tradesMade: 0,
+      totalEarned: 0,
+    };
+  }
+  if (!Array.isArray(game.activityLog)) {
+  game.activityLog = [];
+}
+  if (!towns[game.location]) {
+    game.location = Object.keys(towns)[0];
+  }
+
+  // ---------- SETTINGS ----------
+  if (settings.aiEnabled === undefined)
+    settings.aiEnabled = true;
+
+  if (settings.stabilisationRate === undefined)
+    settings.stabilisationRate = 0.05;
+
+  // ---------- TURN STATE ----------
+  if (!turnState) {
+    turnState = {
+      phase: "player",
+      roundNumber: 1,
+      roundOrder: [],
+      playerIndex: 0,
+    };
+  }
+
+  // ---------- TOWNS ----------
+  for (const townName in towns) {
+
+    const town = towns[townName];
+
+    if (!town.goods)
+      town.goods = {};
+
+    if (!town.routes)
+      town.routes = {};
+
+    // remove invalid routes
+    for (const route in town.routes) {
+      if (!towns[route]) {
+        delete town.routes[route];
+      }
+    }
+
+    // normalise goods
+    for (const good in town.goods) {
+      normaliseGood(town.goods[good]);
+    }
+
+    // normalise routes
+    for (const target in town.routes) {
+      if (typeof town.routes[target] === "number") {
+        town.routes[target] = { dist: town.routes[target], hazard: 0, reward: 0 };
+      }
+      if (!town.routes[target].hazard) town.routes[target].hazard = 0;
+      if (!town.routes[target].reward) town.routes[target].reward = 0;
+    }
+  }
+
+  // ---------- TRADERS ----------
+  traders.forEach(function(trader, index) {
+
+    if (!trader.id)
+      trader.id = "trader_" + index;
+
+    if (!trader.name)
+      trader.name = "Trader";
+
+    if (trader.cash === undefined)
+      trader.cash = 100;
+
+    if (trader.startingCash === undefined)
+      trader.startingCash = trader.cash;
+
+    if (!trader.inventory)
+      trader.inventory = {};
+
+    if (!trader.stats) {
+      trader.stats = {
+        totalEarned: 0,
+        tradesMade: 0,
+        eventsTriggered: 0,
+      };
+    }
+
+    if (!trader.personality) {
+      trader.personality = {
+        preferredGoods: [],
+        preferredTowns: [],
+        aggression: 0.5,
+        riskTolerance: 0.5,
+      };
+    }
+
+    // invalid town fallback
+    if (!towns[trader.location]) {
+      trader.location = Object.keys(towns)[0];
+    }
+
+    // invalid travelling state fix
+    if (
+      trader.state === "travelling" &&
+      (
+        !trader.travelDestination ||
+        !towns[trader.travelDestination]
+      )
+    ) {
+      trader.state = "idle";
+      trader.travelDestination = null;
+      trader.travelDaysRemaining = 0;
+    }
+
+    if (!["idle", "travelling", "broke"].includes(trader.state)) {
+      trader.state = "idle";
+    }
+  });
+
+  // ---------- CLEAN PLAYER INVENTORY ----------
+  for (const good in game.inventory) {
+    const existsSomewhere = Object.values(towns).some(function(t) {
+      return t.goods[good];
+    });
+
+    if (!existsSomewhere) {
+      delete game.inventory[good];
+    }
+  }
+
+  // ---------- CLEAN TRADER INVENTORIES ----------
+  traders.forEach(function(trader) {
+
+    for (const good in trader.inventory) {
+
+      const existsSomewhere = Object.values(towns).some(function(t) {
+        return t.goods[good];
+      });
+
+      if (!existsSomewhere) {
+        delete trader.inventory[good];
+      }
+    }
+  });
+}
+
+function applySaveData(data) {
+
+  if (!data || typeof data !== "object") {
+    throw new Error("Invalid save data");
+  }
+console.log("BEFORE IMPORT:", traders);
+  // ---------- GAME ----------
+  Object.keys(game).forEach(k => delete game[k]);
+
+  Object.assign(game, deepClone(data.game || {}));
+
+  // ---------- SETTINGS ----------
+  Object.keys(settings).forEach(k => delete settings[k]);
+
+  Object.assign(settings, deepClone(data.settings || {}));
+
+  // ---------- TURN STATE ----------
+  Object.keys(turnState).forEach(k => delete turnState[k]);
+
+  Object.assign(turnState, deepClone(data.turnState || {}));
+
+  // ---------- TOWNS ----------
+  Object.keys(towns).forEach(k => delete towns[k]);
+
+  Object.entries(data.towns || {}).forEach(([k, v]) => {
+    towns[k] = deepClone(v);
+  });
+
+  // ---------- TRADERS ----------
+  traders.length = 0;
+
+  (data.traders || []).forEach(t => {
+    traders.push(deepClone(t));
+  });
+console.log("AFTER IMPORT:", traders);
+  validateWorld();
+
+  normaliseAllGoods();
+
+  render();
+  renderMap();
+  renderActivityLog();
+  updateTurnUI();
+
+  console.log("IMPORTED TRADERS:", traders);
+
+  window.tradersDebug = traders;
+
+
+}
+
+function exportWorld() {
+
+  try {
+
+    const saveData = createSaveData();
+
+    const blob = new Blob(
+      [JSON.stringify(saveData, null, 2)],
+      { type: "application/json" }
+    );
+
+    const a = document.createElement("a");
+
+    a.href = URL.createObjectURL(blob);
+    a.download = "world.json";
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    document.body.removeChild(a);
+
+    URL.revokeObjectURL(a.href);
+
+    addLog("💾 World exported successfully", "system");
+
+  } catch (err) {
+
+    console.error(err);
+    alert("Export failed.");
+  }
 }
 
 function importWorld() {
+
   const input = document.createElement("input");
-  input.type = "file"; input.accept = ".json";
+
+  input.type = "file";
+  input.accept = ".json";
+
   input.onchange = function(e) {
-    const file = e.target.files[0]; if (!file) return;
+
+    const file = e.target.files[0];
+
+    if (!file)
+      return;
+
     const reader = new FileReader();
+
     reader.onload = function(ev) {
+
       try {
+
         const data = JSON.parse(ev.target.result);
-        if (data.towns)     towns    = data.towns;
-        if (data.game)      Object.assign(game, data.game);
-        if (data.traders)   traders  = data.traders;
-        if (data.settings)  Object.assign(settings, data.settings);
-        if (data.turnState) Object.assign(turnState, data.turnState);
-        normaliseAllGoods();
-        closeModal(); render();
+console.log("FILE DATA:", data);
+        applySaveData(data);
+        resetGame();
+
         addLog("📂 World imported successfully", "system");
-      } catch (err) { alert("Invalid JSON file."); }
+
+      } catch (err) {
+
+        console.error(err);
+
+        alert(
+          "Invalid or corrupted save file."
+        );
+      }
     };
+
     reader.readAsText(file);
   };
+
   input.click();
 }
 
 // ================= STARTUP =================
+
 async function loadWorld() {
+  let data = null;
   try {
     const res = await fetch("world.json");
-    if (!res.ok) throw new Error("not found");
-    const data = await res.json();
-    if (data.towns)    towns   = data.towns;
-    if (data.game)     Object.assign(game, data.game);
-    if (data.traders)  traders = data.traders;
-    if (data.settings) Object.assign(settings, data.settings);
-    addLog("📂 Loaded world.json", "system");
+    if (!res.ok) throw new Error("No world.json");
+    data = await res.json();
   } catch (e) {
+    // Only reaches here if the file couldn't be fetched/parsed
+    validateWorld();
+    normaliseAllGoods();
     addLog("🌵 No world.json found — using defaults", "system");
+    render();
+    startRound(); // Fresh game — starting a round is correct here
+    return;
   }
-  normaliseAllGoods();
-  startRound();
+
+  // File loaded successfully — resume without running AI turns
+  applySaveData(data);
+  addLog("📂 Loaded world.json", "system");
+  // Don't call startRound() here; applySaveData already renders and
+  // sets up the UI. Just ensure buttons are enabled for the player.
+  setButtonsEnabled(true);
+  updateTurnUI();
 }
 
 loadWorld();
