@@ -1,9 +1,9 @@
 {
-  "version": 1,
-  "exportedAt": "2026-05-08T05:08:57.722Z",
+  "version": 2,
+  "exportedAt": "2026-05-08T12:51:54.769Z",
   "game": {
     "day": 1,
-    "maxDays": 13,
+    "maxDays": 20,
     "cash": 200,
     "location": "Abilene",
     "capacity": 20,
@@ -15,9 +15,9 @@
     "inventory": {
       "whiskey": 5
     },
-    "zoom": 1.3,
-    "offsetX": 169.9219482035627,
-    "offsetY": -26.687955276032568,
+    "zoom": 2.8999999999999995,
+    "offsetX": -244.2125430130635,
+    "offsetY": -652.2656548338529,
     "activityLog": [],
     "stats": {
       "tradesMade": 0,
@@ -26,13 +26,13 @@
   },
   "towns": {
     "Abilene": {
-      "x": -31.49298095703125,
-      "y": 331.59983825683594,
+      "x": -38.434834798177086,
+      "y": 339.18780517578125,
       "goods": {
         "whiskey": {
           "base": 10,
-          "supply": 39,
-          "demand": 62,
+          "supply": 35,
+          "demand": 65,
           "baseSupply": 65,
           "baseDemand": 58
         },
@@ -52,8 +52,8 @@
         },
         "gold": {
           "base": 10,
-          "supply": 24,
-          "demand": 60,
+          "supply": 19,
+          "demand": 63,
           "baseSupply": 50,
           "baseDemand": 50
         }
@@ -77,13 +77,13 @@
       }
     },
     "DodgeCity": {
-      "x": -161.49298095703125,
-      "y": 277.59983825683594,
+      "x": -147.10150146484375,
+      "y": 277.18780517578125,
       "goods": {
         "cattle": {
           "base": 6,
-          "supply": 12,
-          "demand": 80,
+          "supply": 1,
+          "demand": 86,
           "baseSupply": 90,
           "baseDemand": 54
         },
@@ -110,17 +110,22 @@
           "dist": 4,
           "hazard": 0,
           "reward": 0
+        },
+        "very far": {
+          "dist": 5,
+          "hazard": 0,
+          "reward": 0
         }
       }
     },
     "Tombstone": {
-      "x": 324.50701904296875,
-      "y": 263.59983825683594,
+      "x": 280.7629499764279,
+      "y": 267.4479306977371,
       "goods": {
         "whiskey": {
           "base": 15,
-          "supply": 46,
-          "demand": 73,
+          "supply": 82,
+          "demand": 52,
           "baseSupply": 20,
           "baseDemand": 83
         },
@@ -152,6 +157,11 @@
           "dist": 4,
           "hazard": 0,
           "reward": 0
+        },
+        "Cliffside": {
+          "dist": 5,
+          "hazard": 0,
+          "reward": 0
         }
       }
     },
@@ -161,8 +171,8 @@
       "goods": {
         "gold": {
           "base": 50,
-          "supply": 40,
-          "demand": 35,
+          "supply": 41,
+          "demand": 34,
           "baseSupply": 22,
           "baseDemand": 44
         },
@@ -170,8 +180,8 @@
           "base": 10,
           "baseSupply": 50,
           "baseDemand": 50,
-          "supply": 50,
-          "demand": 50
+          "supply": 57,
+          "demand": 46
         }
       },
       "routes": {
@@ -217,6 +227,25 @@
               }
             ]
           }
+        },
+        "very far": {
+          "dist": 4,
+          "hazard": 0.15,
+          "reward": 0.05,
+          "payloads": {
+            "hazard": [
+              {
+                "good": "cash",
+                "val": 0.25
+              }
+            ],
+            "reward": [
+              {
+                "good": "ammunition",
+                "val": 20
+              }
+            ]
+          }
         }
       }
     },
@@ -256,6 +285,11 @@
           "dist": 1,
           "hazard": 0,
           "reward": 0
+        },
+        "Tombstone": {
+          "dist": 5,
+          "hazard": 0,
+          "reward": 0
         }
       }
     },
@@ -267,15 +301,15 @@
           "base": 10,
           "baseSupply": 50,
           "baseDemand": 50,
-          "supply": 53,
-          "demand": 48
+          "supply": 33,
+          "demand": 58
         },
         "gold": {
           "base": 10,
           "baseSupply": 50,
           "baseDemand": 50,
-          "supply": 19,
-          "demand": 67
+          "supply": 13,
+          "demand": 70
         }
       },
       "routes": {
@@ -320,16 +354,64 @@
           "reward": 0
         }
       }
+    },
+    "very far": {
+      "x": -423.2642822265625,
+      "y": 55.95380401611328,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 39,
+          "demand": 56
+        },
+        "ammunition": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 50,
+          "demand": 50
+        }
+      },
+      "routes": {
+        "ElPaso": {
+          "dist": 4,
+          "hazard": 0.15,
+          "reward": 0.05,
+          "payloads": {
+            "hazard": [
+              {
+                "good": "cash",
+                "val": 0.25
+              }
+            ],
+            "reward": [
+              {
+                "good": "ammunition",
+                "val": 20
+              }
+            ]
+          }
+        },
+        "DodgeCity": {
+          "dist": 5,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
     }
   },
   "traders": [
     {
       "id": "trader_1",
       "name": "Rattlesnake Pete",
-      "cash": 150,
+      "cash": 111,
       "startingCash": 150,
       "location": "ElPaso",
-      "inventory": {},
+      "inventory": {
+        "gold": 1
+      },
       "state": "idle",
       "travelDaysRemaining": 0,
       "travelDestination": null,
@@ -348,24 +430,27 @@
           "test",
           "DodgeCity",
           "Abilene",
-          "hg"
+          "hg",
+          "very far"
         ],
         "aggression": 1,
         "riskTolerance": 1
       },
       "stats": {
         "totalEarned": 0,
-        "tradesMade": 0,
+        "tradesMade": 1,
         "eventsTriggered": 0
       }
     },
     {
       "id": "trader_1778125905323",
       "name": "Moose",
-      "cash": 150,
+      "cash": 114,
       "startingCash": 150,
       "location": "Tombstone",
-      "inventory": {},
+      "inventory": {
+        "whiskey": 4
+      },
       "state": "idle",
       "travelDaysRemaining": 0,
       "travelDestination": null,
@@ -384,7 +469,7 @@
       },
       "stats": {
         "totalEarned": 0,
-        "tradesMade": 0,
+        "tradesMade": 1,
         "eventsTriggered": 0
       }
     },
@@ -395,9 +480,13 @@
       "startingCash": 150,
       "location": "DodgeCity",
       "inventory": {},
-      "state": "idle",
-      "travelDaysRemaining": 0,
-      "travelDestination": null,
+      "state": "travelling",
+      "travelDaysRemaining": {
+        "dist": 3,
+        "hazard": 0,
+        "reward": 0
+      },
+      "travelDestination": "ElPaso",
       "personality": {
         "preferredGoods": [
           "cattle",
@@ -468,12 +557,12 @@
     "phase": "player",
     "roundNumber": 1,
     "roundOrder": [
-      "player",
-      "trader_1778177463085",
       "trader_1778125905323",
+      "trader_1778177463085",
       "trader_1",
+      "player",
       "trader_1778176754004"
     ],
-    "playerIndex": 0
+    "playerIndex": 3
   }
 }
