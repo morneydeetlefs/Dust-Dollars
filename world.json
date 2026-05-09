@@ -1,23 +1,23 @@
 {
   "version": 1,
-  "exportedAt": "2026-05-09T04:03:26.353Z",
+  "exportedAt": "2026-05-09T05:45:08.151Z",
   "game": {
     "day": 1,
     "maxDays": 15,
     "cash": 200,
     "location": "Deadwood",
-    "capacity": 18,
+    "capacity": 40,
     "eventsEnabled": true,
     "eventChances": {
-      "danger": 0.28,
-      "good": 0.18
+      "danger": 0,
+      "good": 0
     },
     "inventory": {
       "whiskey": 5
     },
-    "zoom": 2.0200000000000005,
-    "offsetX": 1726.8549872014646,
-    "offsetY": 98.56036425465271,
+    "zoom": 0.6333333333333334,
+    "offsetX": 390.3638689545854,
+    "offsetY": 34.3883545866411,
     "activityLog": [],
     "stats": {
       "tradesMade": 0,
@@ -31,22 +31,22 @@
       "goods": {
         "whiskey": {
           "base": 12,
-          "supply": 24,
-          "demand": 83,
+          "supply": 37,
+          "demand": 65,
           "baseSupply": 40,
           "baseDemand": 72
         },
         "gold": {
           "base": 18,
-          "supply": 12,
-          "demand": 93,
+          "supply": 22,
+          "demand": 62,
           "baseSupply": 28,
           "baseDemand": 68
         },
         "dynamite": {
           "base": 9,
-          "supply": 38,
-          "demand": 62,
+          "supply": 51,
+          "demand": 41,
           "baseSupply": 52,
           "baseDemand": 48
         }
@@ -80,15 +80,15 @@
       "goods": {
         "cattle": {
           "base": 7,
-          "supply": 44,
-          "demand": 50,
+          "supply": 54,
+          "demand": 46,
           "baseSupply": 82,
           "baseDemand": 42
         },
         "grain": {
           "base": 5,
-          "supply": 88,
-          "demand": 28,
+          "supply": 83,
+          "demand": 33,
           "baseSupply": 92,
           "baseDemand": 33
         }
@@ -108,11 +108,6 @@
           "dist": 6,
           "hazard": 0.38,
           "reward": 0.52
-        },
-        "Outlaw's End": {
-          "dist": 4,
-          "hazard": 0.28,
-          "reward": 0.38
         }
       }
     },
@@ -122,15 +117,15 @@
       "goods": {
         "rifles": {
           "base": 22,
-          "supply": 22,
-          "demand": 82,
+          "supply": 34,
+          "demand": 71,
           "baseSupply": 38,
           "baseDemand": 72
         },
         "ammunition": {
           "base": 10,
-          "supply": 39,
-          "demand": 74,
+          "supply": 50,
+          "demand": 65,
           "baseSupply": 58,
           "baseDemand": 58
         }
@@ -164,22 +159,22 @@
       "goods": {
         "gold": {
           "base": 22,
-          "supply": 8,
-          "demand": 96,
+          "supply": 14,
+          "demand": 87,
           "baseSupply": 22,
           "baseDemand": 82
         },
         "dynamite": {
           "base": 14,
-          "supply": 27,
-          "demand": 78,
+          "supply": 34,
+          "demand": 63,
           "baseSupply": 42,
           "baseDemand": 65
         },
         "whiskey": {
           "base": 16,
-          "supply": 35,
-          "demand": 68,
+          "supply": 43,
+          "demand": 54,
           "baseSupply": 48,
           "baseDemand": 58
         }
@@ -195,52 +190,10 @@
           "hazard": 0.28,
           "reward": 0.42
         },
-        "Outlaw's End": {
-          "dist": 2,
-          "hazard": 0.35,
-          "reward": 0.58
-        },
         "Laramie": {
           "dist": 4,
           "hazard": 0.25,
           "reward": 0.35
-        }
-      }
-    },
-    "Outlaw's End": {
-      "x": -325.4427490234375,
-      "y": 583.5021209716797,
-      "goods": {
-        "cattle": {
-          "base": 9,
-          "supply": 52,
-          "demand": 52,
-          "baseSupply": 68,
-          "baseDemand": 48
-        },
-        "rifles": {
-          "base": 28,
-          "supply": 23,
-          "demand": 83,
-          "baseSupply": 38,
-          "baseDemand": 72
-        }
-      },
-      "routes": {
-        "Blackwater": {
-          "dist": 4,
-          "hazard": 0.28,
-          "reward": 0.38
-        },
-        "Sundance": {
-          "dist": 2,
-          "hazard": 0.35,
-          "reward": 0.58
-        },
-        "Laramie": {
-          "dist": 3,
-          "hazard": 0.3,
-          "reward": 0.45
         }
       }
     },
@@ -250,22 +203,22 @@
       "goods": {
         "grain": {
           "base": 6,
-          "supply": 77,
-          "demand": 36,
+          "supply": 83,
+          "demand": 33,
           "baseSupply": 90,
           "baseDemand": 38
         },
         "cattle": {
           "base": 8,
           "supply": 65,
-          "demand": 40,
+          "demand": 38,
           "baseSupply": 75,
           "baseDemand": 45
         },
         "ammunition": {
           "base": 11,
-          "supply": 38,
-          "demand": 68,
+          "supply": 48,
+          "demand": 53,
           "baseSupply": 52,
           "baseDemand": 55
         }
@@ -294,22 +247,22 @@
       "goods": {
         "dynamite": {
           "base": 13,
-          "supply": 25,
-          "demand": 76,
+          "supply": 23,
+          "demand": 63,
           "baseSupply": 40,
           "baseDemand": 62
         },
         "gold": {
           "base": 19,
-          "supply": 15,
-          "demand": 88,
+          "supply": 21,
+          "demand": 80,
           "baseSupply": 25,
           "baseDemand": 78
         },
         "rifles": {
           "base": 24,
-          "supply": 18,
-          "demand": 85,
+          "supply": 27,
+          "demand": 79,
           "baseSupply": 32,
           "baseDemand": 75
         }
@@ -320,11 +273,6 @@
           "hazard": 0.25,
           "reward": 0.35
         },
-        "Outlaw's End": {
-          "dist": 3,
-          "hazard": 0.3,
-          "reward": 0.45
-        },
         "Cheyenne": {
           "dist": 5,
           "hazard": 0.22,
@@ -333,20 +281,20 @@
       }
     },
     "Tombstone": {
-      "x": 443.645121256511,
-      "y": 118.8198852539064,
+      "x": 458.6868542583049,
+      "y": 173.33107956317292,
       "goods": {
         "whiskey": {
           "base": 15,
-          "supply": 40,
-          "demand": 56,
+          "supply": 49,
+          "demand": 36,
           "baseSupply": 55,
           "baseDemand": 48
         },
         "cattle": {
           "base": 10,
-          "supply": 48,
-          "demand": 45,
+          "supply": 55,
+          "demand": 38,
           "baseSupply": 58,
           "baseDemand": 40
         }
@@ -369,10 +317,12 @@
     {
       "id": "trader_ruthless_red",
       "name": "Ruthless Red",
-      "cash": 210,
+      "cash": 84,
       "startingCash": 210,
       "location": "Sundance",
-      "inventory": {},
+      "inventory": {
+        "gold": 1
+      },
       "state": "idle",
       "travelDaysRemaining": 0,
       "travelDestination": null,
@@ -380,31 +330,37 @@
         "preferredGoods": [
           "gold",
           "dynamite",
-          "rifles"
+          "rifles",
+          "whiskey",
+          "ammunition"
         ],
         "preferredTowns": [
           "Deadwood",
           "Sundance",
           "Laramie",
-          "Outlaw's End"
+          "Outlaw's End",
+          "Cheyenne",
+          "Tombstone",
+          "Blackwater",
+          "Redrock"
         ],
-        "aggression": 0.92,
-        "riskTolerance": 0.88
+        "aggression": 1,
+        "riskTolerance": 1
       },
       "stats": {
         "totalEarned": 0,
-        "tradesMade": 0,
+        "tradesMade": 1,
         "eventsTriggered": 0
       }
     },
     {
       "id": "trader_shadow_jack",
       "name": "Shadow Jack",
-      "cash": 122,
+      "cash": 124,
       "startingCash": 190,
       "location": "Redrock",
       "inventory": {
-        "ammunition": 4
+        "ammunition": 6
       },
       "state": "idle",
       "travelDaysRemaining": 0,
@@ -418,7 +374,11 @@
         "preferredTowns": [
           "Blackwater",
           "Redrock",
-          "Cheyenne"
+          "Cheyenne",
+          "Deadwood",
+          "Sundance",
+          "Laramie",
+          "Tombstone"
         ],
         "aggression": 0.78,
         "riskTolerance": 0.72
@@ -434,7 +394,7 @@
       "name": "Viper McGraw",
       "cash": 175,
       "startingCash": 175,
-      "location": "Outlaw's End",
+      "location": "Blackwater",
       "inventory": {},
       "state": "idle",
       "travelDaysRemaining": 0,
@@ -448,8 +408,12 @@
         ],
         "preferredTowns": [
           "Deadwood",
+          "Laramie",
+          "Blackwater",
+          "Redrock",
           "Sundance",
-          "Laramie"
+          "Cheyenne",
+          "Tombstone"
         ],
         "aggression": 0.96,
         "riskTolerance": 0.9
@@ -463,12 +427,10 @@
     {
       "id": "trader_buckshot_billy",
       "name": "Buckshot Billy",
-      "cash": 117,
+      "cash": 165,
       "startingCash": 165,
       "location": "Blackwater",
-      "inventory": {
-        "cattle": 8
-      },
+      "inventory": {},
       "state": "idle",
       "travelDaysRemaining": 0,
       "travelDestination": null,
@@ -481,14 +443,18 @@
         "preferredTowns": [
           "Blackwater",
           "Cheyenne",
-          "Deadwood"
+          "Deadwood",
+          "Redrock",
+          "Sundance",
+          "Laramie",
+          "Tombstone"
         ],
         "aggression": 0.65,
         "riskTolerance": 0.55
       },
       "stats": {
         "totalEarned": 0,
-        "tradesMade": 1,
+        "tradesMade": 0,
         "eventsTriggered": 0
       }
     },
@@ -510,7 +476,11 @@
         "preferredTowns": [
           "Cheyenne",
           "Blackwater",
-          "Redrock"
+          "Redrock",
+          "Laramie",
+          "Tombstone",
+          "Sundance",
+          "Deadwood"
         ],
         "aggression": 0.5,
         "riskTolerance": 0.6
@@ -524,15 +494,19 @@
     {
       "id": "trader_slingshot_sam",
       "name": "Slingshot Sam",
-      "cash": 108,
+      "cash": 116,
       "startingCash": 180,
       "location": "Laramie",
       "inventory": {
         "dynamite": 2
       },
-      "state": "idle",
-      "travelDaysRemaining": 0,
-      "travelDestination": null,
+      "state": "travelling",
+      "travelDaysRemaining": {
+        "dist": 5,
+        "hazard": 0.22,
+        "reward": 0.35
+      },
+      "travelDestination": "Cheyenne",
       "personality": {
         "preferredGoods": [
           "dynamite",
@@ -541,8 +515,13 @@
         ],
         "preferredTowns": [
           "Laramie",
+          "Outlaw's End",
+          "Deadwood",
+          "Blackwater",
+          "Redrock",
           "Sundance",
-          "Outlaw's End"
+          "Cheyenne",
+          "Tombstone"
         ],
         "aggression": 0.85,
         "riskTolerance": 0.8
@@ -560,9 +539,13 @@
       "startingCash": 140,
       "location": "Tombstone",
       "inventory": {},
-      "state": "idle",
-      "travelDaysRemaining": 0,
-      "travelDestination": null,
+      "state": "travelling",
+      "travelDaysRemaining": {
+        "dist": 6,
+        "hazard": 0.35,
+        "reward": 0.4
+      },
+      "travelDestination": "Laramie",
       "personality": {
         "preferredGoods": [
           "whiskey",
@@ -601,7 +584,10 @@
         "preferredTowns": [
           "Sundance",
           "Laramie",
-          "Deadwood"
+          "Deadwood",
+          "Blackwater",
+          "Cheyenne",
+          "Tombstone"
         ],
         "aggression": 0.9,
         "riskTolerance": 0.85
@@ -630,7 +616,11 @@
         "preferredTowns": [
           "Deadwood",
           "Redrock",
-          "Sundance"
+          "Sundance",
+          "Cheyenne",
+          "Laramie",
+          "Tombstone",
+          "Blackwater"
         ],
         "aggression": 0.8,
         "riskTolerance": 0.75
@@ -661,7 +651,11 @@
         "preferredTowns": [
           "Blackwater",
           "Cheyenne",
-          "Tombstone"
+          "Tombstone",
+          "Deadwood",
+          "Sundance",
+          "Redrock",
+          "Laramie"
         ],
         "aggression": 0.6,
         "riskTolerance": 0.5
@@ -674,24 +668,24 @@
     }
   ],
   "settings": {
-    "stabilisationRate": 0.08,
+    "stabilisationRate": 0.1,
     "aiEnabled": true
   },
   "turnState": {
     "phase": "player",
     "roundNumber": 1,
     "roundOrder": [
-      "trader_dusty_trails",
-      "trader_gravedigger_gus",
       "trader_iron_horse",
       "trader_shadow_jack",
-      "trader_slingshot_sam",
-      "trader_buckshot_billy",
-      "trader_bloodmoon_bart",
+      "trader_viper_mcgraw",
       "trader_ruthless_red",
+      "trader_slingshot_sam",
+      "trader_bloodmoon_bart",
+      "trader_dusty_trails",
+      "trader_gravedigger_gus",
       "player",
-      "trader_rattler_joe",
-      "trader_viper_mcgraw"
+      "trader_buckshot_billy",
+      "trader_rattler_joe"
     ],
     "playerIndex": 8
   }
