@@ -1,23 +1,23 @@
 {
-  "version": 2,
-  "exportedAt": "2026-05-08T12:51:54.769Z",
+  "version": 1,
+  "exportedAt": "2026-05-09T04:03:26.353Z",
   "game": {
     "day": 1,
-    "maxDays": 20,
+    "maxDays": 15,
     "cash": 200,
-    "location": "Abilene",
-    "capacity": 20,
+    "location": "Deadwood",
+    "capacity": 18,
     "eventsEnabled": true,
     "eventChances": {
-      "danger": 0,
-      "good": 0
+      "danger": 0.28,
+      "good": 0.18
     },
     "inventory": {
       "whiskey": 5
     },
-    "zoom": 2.8999999999999995,
-    "offsetX": -244.2125430130635,
-    "offsetY": -652.2656548338529,
+    "zoom": 2.0200000000000005,
+    "offsetX": 1726.8549872014646,
+    "offsetY": 98.56036425465271,
     "activityLog": [],
     "stats": {
       "tradesMade": 0,
@@ -25,392 +25,386 @@
     }
   },
   "towns": {
-    "Abilene": {
-      "x": -38.434834798177086,
-      "y": 339.18780517578125,
+    "Deadwood": {
+      "x": -364.03345743815174,
+      "y": 250.50638834635464,
       "goods": {
         "whiskey": {
-          "base": 10,
-          "supply": 35,
-          "demand": 65,
-          "baseSupply": 65,
-          "baseDemand": 58
-        },
-        "cattle": {
-          "base": 8,
-          "supply": 29,
-          "demand": 50,
-          "baseSupply": 60,
-          "baseDemand": 49
-        },
-        "rifles": {
-          "base": 10,
-          "supply": 18,
-          "demand": 65,
-          "baseSupply": 49,
-          "baseDemand": 52
+          "base": 12,
+          "supply": 24,
+          "demand": 83,
+          "baseSupply": 40,
+          "baseDemand": 72
         },
         "gold": {
-          "base": 10,
-          "supply": 19,
-          "demand": 63,
-          "baseSupply": 50,
-          "baseDemand": 50
+          "base": 18,
+          "supply": 12,
+          "demand": 93,
+          "baseSupply": 28,
+          "baseDemand": 68
+        },
+        "dynamite": {
+          "base": 9,
+          "supply": 38,
+          "demand": 62,
+          "baseSupply": 52,
+          "baseDemand": 48
         }
       },
       "routes": {
-        "DodgeCity": {
-          "dist": 2,
-          "hazard": 0,
-          "reward": 0
+        "Blackwater": {
+          "dist": 3,
+          "hazard": 0.22,
+          "reward": 0.32
         },
-        "Tombstone": {
+        "Redrock": {
           "dist": 4,
-          "hazard": 0,
-          "reward": 0
+          "hazard": 0.18,
+          "reward": 0.27
         },
-        "ElPaso": {
-          "dist": 4,
-          "hazard": 0.05,
-          "reward": 0.25
+        "Sundance": {
+          "dist": 5,
+          "hazard": 0.32,
+          "reward": 0.48
+        },
+        "Cheyenne": {
+          "dist": 3,
+          "hazard": 0.15,
+          "reward": 0.22
         }
       }
     },
-    "DodgeCity": {
-      "x": -147.10150146484375,
-      "y": 277.18780517578125,
+    "Blackwater": {
+      "x": -497.36679077148534,
+      "y": 445.506388346355,
       "goods": {
         "cattle": {
-          "base": 6,
-          "supply": 1,
-          "demand": 86,
-          "baseSupply": 90,
-          "baseDemand": 54
+          "base": 7,
+          "supply": 44,
+          "demand": 50,
+          "baseSupply": 82,
+          "baseDemand": 42
         },
         "grain": {
           "base": 5,
-          "supply": 75,
-          "demand": 54,
-          "baseSupply": 79,
+          "supply": 88,
+          "demand": 28,
+          "baseSupply": 92,
+          "baseDemand": 33
+        }
+      },
+      "routes": {
+        "Deadwood": {
+          "dist": 3,
+          "hazard": 0.22,
+          "reward": 0.32
+        },
+        "Redrock": {
+          "dist": 2,
+          "hazard": 0.12,
+          "reward": 0.18
+        },
+        "Sundance": {
+          "dist": 6,
+          "hazard": 0.38,
+          "reward": 0.52
+        },
+        "Outlaw's End": {
+          "dist": 4,
+          "hazard": 0.28,
+          "reward": 0.38
+        }
+      }
+    },
+    "Redrock": {
+      "x": -574.6807438312189,
+      "y": 69.72258917175895,
+      "goods": {
+        "rifles": {
+          "base": 22,
+          "supply": 22,
+          "demand": 82,
+          "baseSupply": 38,
+          "baseDemand": 72
+        },
+        "ammunition": {
+          "base": 10,
+          "supply": 39,
+          "demand": 74,
+          "baseSupply": 58,
           "baseDemand": 58
         }
       },
       "routes": {
-        "Abilene": {
-          "dist": 2,
-          "hazard": 0,
-          "reward": 0
-        },
-        "ElPaso": {
-          "dist": 3,
-          "hazard": 0,
-          "reward": 0
-        },
-        "Tombstone": {
+        "Deadwood": {
           "dist": 4,
-          "hazard": 0,
-          "reward": 0
+          "hazard": 0.18,
+          "reward": 0.27
         },
-        "very far": {
+        "Blackwater": {
+          "dist": 2,
+          "hazard": 0.12,
+          "reward": 0.18
+        },
+        "Sundance": {
+          "dist": 3,
+          "hazard": 0.28,
+          "reward": 0.42
+        },
+        "Cheyenne": {
+          "dist": 4,
+          "hazard": 0.2,
+          "reward": 0.3
+        }
+      }
+    },
+    "Sundance": {
+      "x": 114.29987589518251,
+      "y": 52.173055013020935,
+      "goods": {
+        "gold": {
+          "base": 22,
+          "supply": 8,
+          "demand": 96,
+          "baseSupply": 22,
+          "baseDemand": 82
+        },
+        "dynamite": {
+          "base": 14,
+          "supply": 27,
+          "demand": 78,
+          "baseSupply": 42,
+          "baseDemand": 65
+        },
+        "whiskey": {
+          "base": 16,
+          "supply": 35,
+          "demand": 68,
+          "baseSupply": 48,
+          "baseDemand": 58
+        }
+      },
+      "routes": {
+        "Deadwood": {
           "dist": 5,
-          "hazard": 0,
-          "reward": 0
+          "hazard": 0.32,
+          "reward": 0.48
+        },
+        "Redrock": {
+          "dist": 3,
+          "hazard": 0.28,
+          "reward": 0.42
+        },
+        "Outlaw's End": {
+          "dist": 2,
+          "hazard": 0.35,
+          "reward": 0.58
+        },
+        "Laramie": {
+          "dist": 4,
+          "hazard": 0.25,
+          "reward": 0.35
+        }
+      }
+    },
+    "Outlaw's End": {
+      "x": -325.4427490234375,
+      "y": 583.5021209716797,
+      "goods": {
+        "cattle": {
+          "base": 9,
+          "supply": 52,
+          "demand": 52,
+          "baseSupply": 68,
+          "baseDemand": 48
+        },
+        "rifles": {
+          "base": 28,
+          "supply": 23,
+          "demand": 83,
+          "baseSupply": 38,
+          "baseDemand": 72
+        }
+      },
+      "routes": {
+        "Blackwater": {
+          "dist": 4,
+          "hazard": 0.28,
+          "reward": 0.38
+        },
+        "Sundance": {
+          "dist": 2,
+          "hazard": 0.35,
+          "reward": 0.58
+        },
+        "Laramie": {
+          "dist": 3,
+          "hazard": 0.3,
+          "reward": 0.45
+        }
+      }
+    },
+    "Cheyenne": {
+      "x": 60.966542561849074,
+      "y": 365.50638834635487,
+      "goods": {
+        "grain": {
+          "base": 6,
+          "supply": 77,
+          "demand": 36,
+          "baseSupply": 90,
+          "baseDemand": 38
+        },
+        "cattle": {
+          "base": 8,
+          "supply": 65,
+          "demand": 40,
+          "baseSupply": 75,
+          "baseDemand": 45
+        },
+        "ammunition": {
+          "base": 11,
+          "supply": 38,
+          "demand": 68,
+          "baseSupply": 52,
+          "baseDemand": 55
+        }
+      },
+      "routes": {
+        "Deadwood": {
+          "dist": 3,
+          "hazard": 0.15,
+          "reward": 0.22
+        },
+        "Redrock": {
+          "dist": 4,
+          "hazard": 0.2,
+          "reward": 0.3
+        },
+        "Laramie": {
+          "dist": 5,
+          "hazard": 0.22,
+          "reward": 0.35
+        }
+      }
+    },
+    "Laramie": {
+      "x": 298.08956570095523,
+      "y": 446.59766303168465,
+      "goods": {
+        "dynamite": {
+          "base": 13,
+          "supply": 25,
+          "demand": 76,
+          "baseSupply": 40,
+          "baseDemand": 62
+        },
+        "gold": {
+          "base": 19,
+          "supply": 15,
+          "demand": 88,
+          "baseSupply": 25,
+          "baseDemand": 78
+        },
+        "rifles": {
+          "base": 24,
+          "supply": 18,
+          "demand": 85,
+          "baseSupply": 32,
+          "baseDemand": 75
+        }
+      },
+      "routes": {
+        "Sundance": {
+          "dist": 4,
+          "hazard": 0.25,
+          "reward": 0.35
+        },
+        "Outlaw's End": {
+          "dist": 3,
+          "hazard": 0.3,
+          "reward": 0.45
+        },
+        "Cheyenne": {
+          "dist": 5,
+          "hazard": 0.22,
+          "reward": 0.35
         }
       }
     },
     "Tombstone": {
-      "x": 280.7629499764279,
-      "y": 267.4479306977371,
+      "x": 443.645121256511,
+      "y": 118.8198852539064,
       "goods": {
         "whiskey": {
           "base": 15,
-          "supply": 82,
-          "demand": 52,
-          "baseSupply": 20,
-          "baseDemand": 83
-        },
-        "rifles": {
-          "base": 40,
-          "supply": 50,
+          "supply": 40,
           "demand": 56,
-          "baseSupply": 26,
-          "baseDemand": 73
-        }
-      },
-      "routes": {
-        "Abilene": {
-          "dist": 4,
-          "hazard": 0,
-          "reward": 0
-        },
-        "ElPaso": {
-          "dist": 2,
-          "hazard": 0,
-          "reward": 0
-        },
-        "test": {
-          "dist": 5,
-          "hazard": 0,
-          "reward": 0
-        },
-        "DodgeCity": {
-          "dist": 4,
-          "hazard": 0,
-          "reward": 0
-        },
-        "Cliffside": {
-          "dist": 5,
-          "hazard": 0,
-          "reward": 0
-        }
-      }
-    },
-    "ElPaso": {
-      "x": 94.50701904296875,
-      "y": 81.59983825683594,
-      "goods": {
-        "gold": {
-          "base": 50,
-          "supply": 41,
-          "demand": 34,
-          "baseSupply": 22,
-          "baseDemand": 44
-        },
-        "grain": {
-          "base": 10,
-          "baseSupply": 50,
-          "baseDemand": 50,
-          "supply": 57,
-          "demand": 46
-        }
-      },
-      "routes": {
-        "DodgeCity": {
-          "dist": 3,
-          "hazard": 0,
-          "reward": 0
-        },
-        "Tombstone": {
-          "dist": 2,
-          "hazard": 0,
-          "reward": 0
-        },
-        "Cliffside": {
-          "dist": 3,
-          "hazard": 0,
-          "reward": 0
-        },
-        "test": {
-          "dist": 6,
-          "hazard": 0,
-          "reward": 0
-        },
-        "Abilene": {
-          "dist": 4,
-          "hazard": 0.05,
-          "reward": 0.25,
-          "payloads": {
-            "hazard": [
-              {
-                "good": "whiskey",
-                "val": 0.5
-              },
-              {
-                "good": "gold",
-                "val": 0.2
-              }
-            ],
-            "reward": [
-              {
-                "good": "cash",
-                "val": 50
-              }
-            ]
-          }
-        },
-        "very far": {
-          "dist": 4,
-          "hazard": 0.15,
-          "reward": 0.05,
-          "payloads": {
-            "hazard": [
-              {
-                "good": "cash",
-                "val": 0.25
-              }
-            ],
-            "reward": [
-              {
-                "good": "ammunition",
-                "val": 20
-              }
-            ]
-          }
-        }
-      }
-    },
-    "Cliffside": {
-      "x": 662.5070190429688,
-      "y": 641.5998382568359,
-      "goods": {
-        "whiskey": {
-          "base": 10,
-          "supply": 22,
-          "demand": 60,
-          "baseSupply": 50,
+          "baseSupply": 55,
           "baseDemand": 48
         },
         "cattle": {
           "base": 10,
-          "supply": 54,
-          "demand": 42,
-          "baseSupply": 62,
-          "baseDemand": 39
-        },
-        "grain": {
-          "base": 10,
-          "supply": 59,
-          "demand": 59,
-          "baseSupply": 59,
-          "baseDemand": 59
+          "supply": 48,
+          "demand": 45,
+          "baseSupply": 58,
+          "baseDemand": 40
         }
       },
       "routes": {
-        "ElPaso": {
-          "dist": 3,
-          "hazard": 0,
-          "reward": 0
-        },
-        "test": {
-          "dist": 1,
-          "hazard": 0,
-          "reward": 0
-        },
-        "Tombstone": {
-          "dist": 5,
-          "hazard": 0,
-          "reward": 0
-        }
-      }
-    },
-    "test": {
-      "x": 608.5070190429688,
-      "y": 37.59983825683594,
-      "goods": {
-        "whiskey": {
-          "base": 10,
-          "baseSupply": 50,
-          "baseDemand": 50,
-          "supply": 33,
-          "demand": 58
-        },
-        "gold": {
-          "base": 10,
-          "baseSupply": 50,
-          "baseDemand": 50,
-          "supply": 13,
-          "demand": 70
-        }
-      },
-      "routes": {
-        "Cliffside": {
-          "dist": 1,
-          "hazard": 0,
-          "reward": 0
-        },
-        "Tombstone": {
-          "dist": 5,
-          "hazard": 0,
-          "reward": 0
-        },
-        "ElPaso": {
-          "dist": 6,
-          "hazard": 0,
-          "reward": 0
-        },
-        "hg": {
-          "dist": 2,
-          "hazard": 0,
-          "reward": 0
-        }
-      }
-    },
-    "hg": {
-      "x": 956.5070190429688,
-      "y": 281.59983825683594,
-      "goods": {
-        "whiskey": {
-          "base": 10,
-          "baseSupply": 50,
-          "baseDemand": 50,
-          "supply": 41,
-          "demand": 55
-        }
-      },
-      "routes": {
-        "test": {
-          "dist": 2,
-          "hazard": 0,
-          "reward": 0
-        }
-      }
-    },
-    "very far": {
-      "x": -423.2642822265625,
-      "y": 55.95380401611328,
-      "goods": {
-        "whiskey": {
-          "base": 10,
-          "baseSupply": 50,
-          "baseDemand": 50,
-          "supply": 39,
-          "demand": 56
-        },
-        "ammunition": {
-          "base": 10,
-          "baseSupply": 50,
-          "baseDemand": 50,
-          "supply": 50,
-          "demand": 50
-        }
-      },
-      "routes": {
-        "ElPaso": {
+        "Sundance": {
           "dist": 4,
-          "hazard": 0.15,
-          "reward": 0.05,
-          "payloads": {
-            "hazard": [
-              {
-                "good": "cash",
-                "val": 0.25
-              }
-            ],
-            "reward": [
-              {
-                "good": "ammunition",
-                "val": 20
-              }
-            ]
-          }
+          "hazard": 0.2,
+          "reward": 0.3
         },
-        "DodgeCity": {
-          "dist": 5,
-          "hazard": 0,
-          "reward": 0
+        "Laramie": {
+          "dist": 6,
+          "hazard": 0.35,
+          "reward": 0.4
         }
       }
     }
   },
   "traders": [
     {
-      "id": "trader_1",
-      "name": "Rattlesnake Pete",
-      "cash": 111,
-      "startingCash": 150,
-      "location": "ElPaso",
+      "id": "trader_ruthless_red",
+      "name": "Ruthless Red",
+      "cash": 210,
+      "startingCash": 210,
+      "location": "Sundance",
+      "inventory": {},
+      "state": "idle",
+      "travelDaysRemaining": 0,
+      "travelDestination": null,
+      "personality": {
+        "preferredGoods": [
+          "gold",
+          "dynamite",
+          "rifles"
+        ],
+        "preferredTowns": [
+          "Deadwood",
+          "Sundance",
+          "Laramie",
+          "Outlaw's End"
+        ],
+        "aggression": 0.92,
+        "riskTolerance": 0.88
+      },
+      "stats": {
+        "totalEarned": 0,
+        "tradesMade": 0,
+        "eventsTriggered": 0
+      }
+    },
+    {
+      "id": "trader_shadow_jack",
+      "name": "Shadow Jack",
+      "cash": 122,
+      "startingCash": 190,
+      "location": "Redrock",
       "inventory": {
-        "gold": 1
+        "ammunition": 4
       },
       "state": "idle",
       "travelDaysRemaining": 0,
@@ -418,23 +412,16 @@
       "personality": {
         "preferredGoods": [
           "whiskey",
-          "rifles",
-          "gold",
           "cattle",
-          "grain"
+          "ammunition"
         ],
         "preferredTowns": [
-          "Tombstone",
-          "ElPaso",
-          "Cliffside",
-          "test",
-          "DodgeCity",
-          "Abilene",
-          "hg",
-          "very far"
+          "Blackwater",
+          "Redrock",
+          "Cheyenne"
         ],
-        "aggression": 1,
-        "riskTolerance": 1
+        "aggression": 0.78,
+        "riskTolerance": 0.72
       },
       "stats": {
         "totalEarned": 0,
@@ -443,14 +430,75 @@
       }
     },
     {
-      "id": "trader_1778125905323",
-      "name": "Moose",
-      "cash": 114,
-      "startingCash": 150,
-      "location": "Tombstone",
-      "inventory": {
-        "whiskey": 4
+      "id": "trader_viper_mcgraw",
+      "name": "Viper McGraw",
+      "cash": 175,
+      "startingCash": 175,
+      "location": "Outlaw's End",
+      "inventory": {},
+      "state": "idle",
+      "travelDaysRemaining": 0,
+      "travelDestination": null,
+      "personality": {
+        "preferredGoods": [
+          "gold",
+          "dynamite",
+          "ammunition",
+          "rifles"
+        ],
+        "preferredTowns": [
+          "Deadwood",
+          "Sundance",
+          "Laramie"
+        ],
+        "aggression": 0.96,
+        "riskTolerance": 0.9
       },
+      "stats": {
+        "totalEarned": 0,
+        "tradesMade": 0,
+        "eventsTriggered": 0
+      }
+    },
+    {
+      "id": "trader_buckshot_billy",
+      "name": "Buckshot Billy",
+      "cash": 117,
+      "startingCash": 165,
+      "location": "Blackwater",
+      "inventory": {
+        "cattle": 8
+      },
+      "state": "idle",
+      "travelDaysRemaining": 0,
+      "travelDestination": null,
+      "personality": {
+        "preferredGoods": [
+          "cattle",
+          "grain",
+          "whiskey"
+        ],
+        "preferredTowns": [
+          "Blackwater",
+          "Cheyenne",
+          "Deadwood"
+        ],
+        "aggression": 0.65,
+        "riskTolerance": 0.55
+      },
+      "stats": {
+        "totalEarned": 0,
+        "tradesMade": 1,
+        "eventsTriggered": 0
+      }
+    },
+    {
+      "id": "trader_dusty_trails",
+      "name": "Dusty Trails",
+      "cash": 155,
+      "startingCash": 155,
+      "location": "Cheyenne",
+      "inventory": {},
       "state": "idle",
       "travelDaysRemaining": 0,
       "travelDestination": null,
@@ -460,12 +508,44 @@
           "cattle"
         ],
         "preferredTowns": [
-          "Abilene",
-          "DodgeCity",
-          "Tombstone"
+          "Cheyenne",
+          "Blackwater",
+          "Redrock"
         ],
         "aggression": 0.5,
-        "riskTolerance": 0.5
+        "riskTolerance": 0.6
+      },
+      "stats": {
+        "totalEarned": 0,
+        "tradesMade": 0,
+        "eventsTriggered": 0
+      }
+    },
+    {
+      "id": "trader_slingshot_sam",
+      "name": "Slingshot Sam",
+      "cash": 108,
+      "startingCash": 180,
+      "location": "Laramie",
+      "inventory": {
+        "dynamite": 2
+      },
+      "state": "idle",
+      "travelDaysRemaining": 0,
+      "travelDestination": null,
+      "personality": {
+        "preferredGoods": [
+          "dynamite",
+          "rifles",
+          "gold"
+        ],
+        "preferredTowns": [
+          "Laramie",
+          "Sundance",
+          "Outlaw's End"
+        ],
+        "aggression": 0.85,
+        "riskTolerance": 0.8
       },
       "stats": {
         "totalEarned": 0,
@@ -474,37 +554,27 @@
       }
     },
     {
-      "id": "trader_1778177463085",
-      "name": "New Trader 1",
-      "cash": 150,
-      "startingCash": 150,
-      "location": "DodgeCity",
+      "id": "trader_iron_horse",
+      "name": "Iron Horse",
+      "cash": 140,
+      "startingCash": 140,
+      "location": "Tombstone",
       "inventory": {},
-      "state": "travelling",
-      "travelDaysRemaining": {
-        "dist": 3,
-        "hazard": 0,
-        "reward": 0
-      },
-      "travelDestination": "ElPaso",
+      "state": "idle",
+      "travelDaysRemaining": 0,
+      "travelDestination": null,
       "personality": {
         "preferredGoods": [
-          "cattle",
-          "gold",
-          "grain",
-          "rifles",
-          "whiskey"
+          "whiskey",
+          "cattle"
         ],
         "preferredTowns": [
-          "Abilene",
-          "DodgeCity",
           "Tombstone",
-          "ElPaso",
-          "Cliffside",
-          "test"
+          "Sundance",
+          "Laramie"
         ],
-        "aggression": 1,
-        "riskTolerance": 1
+        "aggression": 0.7,
+        "riskTolerance": 0.65
       },
       "stats": {
         "totalEarned": 0,
@@ -513,56 +583,116 @@
       }
     },
     {
-      "id": "trader_1778176754004",
-      "name": "Buck Rogers",
-      "cash": 150,
-      "startingCash": 150,
-      "location": "test",
+      "id": "trader_bloodmoon_bart",
+      "name": "Bloodmoon Bart",
+      "cash": 195,
+      "startingCash": 195,
+      "location": "Sundance",
       "inventory": {},
       "state": "idle",
       "travelDaysRemaining": 0,
       "travelDestination": null,
       "personality": {
         "preferredGoods": [
-          "cattle",
           "gold",
-          "grain",
-          "rifles",
-          "whiskey"
+          "dynamite",
+          "rifles"
         ],
         "preferredTowns": [
-          "Abilene",
-          "DodgeCity",
-          "Tombstone",
-          "ElPaso",
-          "Cliffside",
-          "test",
-          "hg"
+          "Sundance",
+          "Laramie",
+          "Deadwood"
         ],
-        "aggression": 1,
-        "riskTolerance": 1
+        "aggression": 0.9,
+        "riskTolerance": 0.85
       },
       "stats": {
         "totalEarned": 0,
         "tradesMade": 0,
         "eventsTriggered": 0
       }
+    },
+    {
+      "id": "trader_rattler_joe",
+      "name": "Rattler Joe",
+      "cash": 168,
+      "startingCash": 168,
+      "location": "Deadwood",
+      "inventory": {},
+      "state": "idle",
+      "travelDaysRemaining": 0,
+      "travelDestination": null,
+      "personality": {
+        "preferredGoods": [
+          "ammunition",
+          "rifles"
+        ],
+        "preferredTowns": [
+          "Deadwood",
+          "Redrock",
+          "Sundance"
+        ],
+        "aggression": 0.8,
+        "riskTolerance": 0.75
+      },
+      "stats": {
+        "totalEarned": 0,
+        "tradesMade": 0,
+        "eventsTriggered": 0
+      }
+    },
+    {
+      "id": "trader_gravedigger_gus",
+      "name": "Gravedigger Gus",
+      "cash": 110,
+      "startingCash": 150,
+      "location": "Blackwater",
+      "inventory": {
+        "cattle": 8
+      },
+      "state": "idle",
+      "travelDaysRemaining": 0,
+      "travelDestination": null,
+      "personality": {
+        "preferredGoods": [
+          "cattle",
+          "grain"
+        ],
+        "preferredTowns": [
+          "Blackwater",
+          "Cheyenne",
+          "Tombstone"
+        ],
+        "aggression": 0.6,
+        "riskTolerance": 0.5
+      },
+      "stats": {
+        "totalEarned": 0,
+        "tradesMade": 1,
+        "eventsTriggered": 0
+      }
     }
   ],
   "settings": {
-    "stabilisationRate": 0.05,
+    "stabilisationRate": 0.08,
     "aiEnabled": true
   },
   "turnState": {
     "phase": "player",
     "roundNumber": 1,
     "roundOrder": [
-      "trader_1778125905323",
-      "trader_1778177463085",
-      "trader_1",
+      "trader_dusty_trails",
+      "trader_gravedigger_gus",
+      "trader_iron_horse",
+      "trader_shadow_jack",
+      "trader_slingshot_sam",
+      "trader_buckshot_billy",
+      "trader_bloodmoon_bart",
+      "trader_ruthless_red",
       "player",
-      "trader_1778176754004"
+      "trader_rattler_joe",
+      "trader_viper_mcgraw"
     ],
-    "playerIndex": 3
+    "playerIndex": 8
   }
 }

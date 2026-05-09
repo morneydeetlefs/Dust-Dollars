@@ -58,7 +58,7 @@ let turnState = {
   playerIndex: 0,
 };
 
-// ================= MAP EDITOR =================
+// = ================= MAP EDITOR =================
 let mapEditor = { mode: null, selected: null, draggedTown: null };
 
 // ================= TOWNS =================
@@ -381,6 +381,15 @@ function renderMap() {
       })(trader);
     }
     mapInner.appendChild(dot);
+
+    // Add trader name
+    const nameTag = document.createElement("div");
+    nameTag.className = "trader-name-tag";
+    nameTag.innerText = trader.name;
+    nameTag.style.left = (town.x + 16) + "px";
+    nameTag.style.top = (town.y - 36) + "px"; // Position above the dot
+    nameTag.title = trader.name + " — $" + trader.cash + " (" + trader.state + ")";
+    mapInner.appendChild(nameTag);
   });
 
   map.onclick = function(e) {
@@ -415,12 +424,23 @@ function showTraderInfo(trader) {
 }
 
 // ================= PAN & ZOOM =================
-let isDragging = false, lastX = 0, lastY = 0;
+let isDragging = false, lastX = 0, lastY = 0, pinchDist = 0;
 
 map.onmousedown = function(e) {
   if (mapEditor.mode) return;
   isDragging = true; lastX = e.clientX; lastY = e.clientY;
 };
+map.ontouchstart = function(e) {
+  if (mapEditor.mode) return;
+  if (e.touches.length === 1) {
+    isDragging = true; lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+  } else if (e.touches.length === 2) {
+    pinchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX,
+                           e.touches[0].clientY - e.touches[1].clientY);
+  }
+  e.preventDefault();
+};
+
 window.onmousemove = function(e) {
   if (mapEditor.draggedTown) {
     const rect = mapInner.getBoundingClientRect();
@@ -436,19 +456,68 @@ window.onmousemove = function(e) {
   lastX = e.clientX; lastY = e.clientY;
   updateMapTransform();
 };
+
+window.ontouchmove = function(e) {
+  if (mapEditor.draggedTown) {
+    const rect = mapInner.getBoundingClientRect();
+    const town = towns[mapEditor.draggedTown];
+    town.x = (e.touches[0].clientX - rect.left) / game.zoom;
+    town.y = (e.touches[0].clientY - rect.top) / game.zoom;
+    renderMap();
+    return;
+  }
+  if (!isDragging) return;
+  e.preventDefault();
+
+  if (e.touches.length === 1) {
+    game.offsetX += e.touches[0].clientX - lastX;
+    game.offsetY += e.touches[0].clientY - lastY;
+    lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+    updateMapTransform();
+  } else if (e.touches.length === 2) {
+    const newPinchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX,
+                                    e.touches[0].clientY - e.touches[1].clientY);
+    const scale = newPinchDist / pinchDist;
+    const newZoom = Math.min(Math.max(0.5, game.zoom * scale), 3);
+
+    const rect = map.getBoundingClientRect();
+    const cx = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+    const cy = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+    const mx = cx - rect.left, my = cy - rect.top;
+    const wx = (mx - game.offsetX) / game.zoom, wy = (my - game.offsetY) / game.zoom;
+
+    game.zoom = newZoom;
+    game.offsetX = mx - wx * game.zoom;
+    game.offsetY = my - wy * game.zoom;
+
+    pinchDist = newPinchDist;
+    updateMapTransform();
+  }
+};
+
 window.onmouseup = function() {
   isDragging = false;
   mapEditor.draggedTown = null;
 };
+
+window.ontouchend = function(e) {
+  if (e.touches.length === 0) {
+    isDragging = false;
+    mapEditor.draggedTown = null;
+    pinchDist = 0;
+  }
+};
+
 map.onwheel = function(e) {
   e.preventDefault();
   const newZoom = Math.min(Math.max(0.5, game.zoom - e.deltaY * 0.001), 3);
-  const rect    = map.getBoundingClientRect();
-  const mx      = e.clientX - rect.left, my = e.clientY - rect.top;
-  const wx      = (mx - game.offsetX) / game.zoom, wy = (my - game.offsetY) / game.zoom;
-  game.zoom     = newZoom;
-  game.offsetX  = mx - wx * game.zoom;
-  game.offsetY  = my - wy * game.zoom;
+  const rect = map.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  const wx = (mx - game.offsetX) / game.zoom, wy = (my - game.offsetY) / game.zoom;
+  game.zoom = newZoom;
+  game.offsetX = mx - wx * game.zoom;
+  game.offsetY = my - wy * game.zoom;
   updateMapTransform();
 };
 
@@ -697,7 +766,7 @@ function playerDangerEvent() {
     const goods = Object.keys(game.inventory).filter(function(g) { return game.inventory[g] > 0; });
     if (goods.length) {
       const g = goods[Math.floor(Math.random() * goods.length)];
-      const lost = Math.ceil(game.inventory[g] * 0.5);
+      const lost = Math.CeiL(game.inventory[g] * 0.5);
       game.inventory[g] -= lost;
       if (game.inventory[g] <= 0) delete game.inventory[g];
       addLog("🔫 Ambush! You lost " + lost + " " + g, "danger");
@@ -1914,3 +1983,4 @@ async function loadWorld() {
 }
 
 loadWorld();
+
