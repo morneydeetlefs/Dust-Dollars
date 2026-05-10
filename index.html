@@ -11,31 +11,45 @@
 
   <body>
     <header id="header">
-  <span id="turn-indicator">👤 Your Turn</span>
-  <span id="day-counter">Day 1/30</span>
-</header>
+      <span id="turn-indicator">👤 Your Turn</span>
+      <span id="day-counter">Day 1/30</span>
+    </header>
 
     <div id="map">
       <div id="map-inner"></div>
     </div>
 
     <main id="main"></main>
-    <div id="day-counter" style="font-weight: bold;"></div>
-
 
     <footer>
-      <button onclick="openBuy()">Buy</button>
-      <button onclick="openSell()">Sell</button>
-      <button onclick="openTravel()">Travel</button>
-      <button onclick="openMarket()">Market</button>
-      <button onclick="endTurn()">End Turn</button>
-      <button onclick="openEditor()">⚙</button>
-      <span id="turn-indicator"></span>
+      <button id="btn-buy"     onclick="openBuy()">Buy</button>
+      <button id="btn-sell"    onclick="openSell()">Sell</button>
+      <button id="btn-travel"  onclick="openTravel()">Travel</button>
+      <button id="btn-market"  onclick="openMarket()">Market</button>
+      <button id="btn-endturn" onclick="endTurn()">End Turn</button>
+      <button id="btn-editor"  onclick="openEditor()">⚙</button>
     </footer>
 
     <div id="modal" class="modal hidden"></div>
 
-    <!-- JS -->
-    <script src="game.js"></script>
+    <!-- Activity Log -->
+    <div id="activity-log"></div>
+
+    <!-- JS — load order matters: state first, then helpers, then systems, then startup -->
+    <script src="js/state.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/log.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/map-input.js"></script>
+    <script src="js/market.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/turns.js"></script>
+    <script src="js/trade.js"></script>
+    <script src="js/travel.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/save.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

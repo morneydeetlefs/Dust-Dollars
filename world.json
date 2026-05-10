@@ -1,23 +1,23 @@
 {
   "version": 1,
-  "exportedAt": "2026-05-09T05:45:08.151Z",
+  "exportedAt": "2026-05-10T16:27:23.725Z",
   "game": {
     "day": 1,
-    "maxDays": 15,
+    "maxDays": 25,
     "cash": 200,
     "location": "Deadwood",
-    "capacity": 40,
+    "capacity": 20,
     "eventsEnabled": true,
     "eventChances": {
-      "danger": 0,
-      "good": 0
+      "danger": 0.25,
+      "good": 0.25
     },
     "inventory": {
       "whiskey": 5
     },
-    "zoom": 0.6333333333333334,
-    "offsetX": 390.3638689545854,
-    "offsetY": 34.3883545866411,
+    "zoom": 1,
+    "offsetX": 623,
+    "offsetY": -63,
     "activityLog": [],
     "stats": {
       "tradesMade": 0,
@@ -26,289 +26,1565 @@
   },
   "towns": {
     "Deadwood": {
-      "x": -364.03345743815174,
-      "y": 250.50638834635464,
+      "x": 41.19048345656621,
+      "y": 242.6024073646182,
       "goods": {
         "whiskey": {
           "base": 12,
-          "supply": 37,
-          "demand": 65,
+          "supply": 54,
+          "demand": 44,
           "baseSupply": 40,
           "baseDemand": 72
         },
         "gold": {
           "base": 18,
-          "supply": 22,
-          "demand": 62,
+          "supply": 7,
+          "demand": 56,
           "baseSupply": 28,
           "baseDemand": 68
         },
         "dynamite": {
           "base": 9,
-          "supply": 51,
-          "demand": 41,
+          "supply": 37,
+          "demand": 38,
           "baseSupply": 52,
           "baseDemand": 48
-        }
-      },
-      "routes": {
-        "Blackwater": {
-          "dist": 3,
-          "hazard": 0.22,
-          "reward": 0.32
         },
-        "Redrock": {
-          "dist": 4,
-          "hazard": 0.18,
-          "reward": 0.27
-        },
-        "Sundance": {
-          "dist": 5,
-          "hazard": 0.32,
-          "reward": 0.48
-        },
-        "Cheyenne": {
-          "dist": 3,
-          "hazard": 0.15,
-          "reward": 0.22
-        }
-      }
-    },
-    "Blackwater": {
-      "x": -497.36679077148534,
-      "y": 445.506388346355,
-      "goods": {
-        "cattle": {
-          "base": 7,
-          "supply": 54,
-          "demand": 46,
-          "baseSupply": 82,
-          "baseDemand": 42
+        "ammunition": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 31,
+          "demand": 36
         },
         "grain": {
-          "base": 5,
-          "supply": 83,
-          "demand": 33,
-          "baseSupply": 92,
-          "baseDemand": 33
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 40,
+          "demand": 32
+        },
+        "cattle": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 7,
+          "demand": 48
+        },
+        "rifles": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 27,
+          "demand": 30
         }
       },
       "routes": {
-        "Deadwood": {
+        "t1": {
           "dist": 3,
-          "hazard": 0.22,
-          "reward": 0.32
+          "hazard": 0,
+          "reward": 0
         },
-        "Redrock": {
+        "t5": {
           "dist": 2,
-          "hazard": 0.12,
-          "reward": 0.18
+          "hazard": 0,
+          "reward": 0
         },
-        "Sundance": {
-          "dist": 6,
-          "hazard": 0.38,
-          "reward": 0.52
+        "t32": {
+          "dist": 5,
+          "hazard": 0.25,
+          "reward": 0,
+          "payloads": {
+            "hazard": [
+              {
+                "good": "gold",
+                "val": 0.3
+              }
+            ],
+            "reward": [
+              {
+                "good": "cash",
+                "val": 200
+              }
+            ]
+          }
+        },
+        "t22": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
         }
       }
     },
-    "Redrock": {
-      "x": -574.6807438312189,
-      "y": 69.72258917175895,
+    "Outlaw's End": {
+      "x": -127.85717192150297,
+      "y": -589.5404634021577,
       "goods": {
+        "cattle": {
+          "base": 9,
+          "supply": 47,
+          "demand": 35,
+          "baseSupply": 68,
+          "baseDemand": 48
+        },
         "rifles": {
-          "base": 22,
-          "supply": 34,
-          "demand": 71,
+          "base": 28,
+          "supply": 17,
+          "demand": 54,
           "baseSupply": 38,
           "baseDemand": 72
-        },
-        "ammunition": {
+        }
+      },
+      "routes": {
+        "t46": {
+          "dist": 10,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t1": {
+      "x": -4.047611781529017,
+      "y": 358.0786023821149,
+      "goods": {
+        "whiskey": {
           "base": 10,
-          "supply": 50,
-          "demand": 65,
-          "baseSupply": 58,
-          "baseDemand": 58
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 29,
+          "demand": 38
         }
       },
       "routes": {
         "Deadwood": {
-          "dist": 4,
-          "hazard": 0.18,
-          "reward": 0.27
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
         },
-        "Blackwater": {
+        "t13": {
           "dist": 2,
-          "hazard": 0.12,
-          "reward": 0.18
+          "hazard": 0,
+          "reward": 0
         },
-        "Sundance": {
+        "t2": {
           "dist": 3,
-          "hazard": 0.28,
-          "reward": 0.42
+          "hazard": 0,
+          "reward": 0
         },
-        "Cheyenne": {
-          "dist": 4,
-          "hazard": 0.2,
-          "reward": 0.3
+        "t3": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
         }
       }
     },
-    "Sundance": {
-      "x": 114.29987589518251,
-      "y": 52.173055013020935,
-      "goods": {
-        "gold": {
-          "base": 22,
-          "supply": 14,
-          "demand": 87,
-          "baseSupply": 22,
-          "baseDemand": 82
-        },
-        "dynamite": {
-          "base": 14,
-          "supply": 34,
-          "demand": 63,
-          "baseSupply": 42,
-          "baseDemand": 65
-        },
-        "whiskey": {
-          "base": 16,
-          "supply": 43,
-          "demand": 54,
-          "baseSupply": 48,
-          "baseDemand": 58
-        }
-      },
-      "routes": {
-        "Deadwood": {
-          "dist": 5,
-          "hazard": 0.32,
-          "reward": 0.48
-        },
-        "Redrock": {
-          "dist": 3,
-          "hazard": 0.28,
-          "reward": 0.42
-        },
-        "Laramie": {
-          "dist": 4,
-          "hazard": 0.25,
-          "reward": 0.35
-        }
-      }
-    },
-    "Cheyenne": {
-      "x": 60.966542561849074,
-      "y": 365.50638834635487,
-      "goods": {
-        "grain": {
-          "base": 6,
-          "supply": 83,
-          "demand": 33,
-          "baseSupply": 90,
-          "baseDemand": 38
-        },
-        "cattle": {
-          "base": 8,
-          "supply": 65,
-          "demand": 38,
-          "baseSupply": 75,
-          "baseDemand": 45
-        },
-        "ammunition": {
-          "base": 11,
-          "supply": 48,
-          "demand": 53,
-          "baseSupply": 52,
-          "baseDemand": 55
-        }
-      },
-      "routes": {
-        "Deadwood": {
-          "dist": 3,
-          "hazard": 0.15,
-          "reward": 0.22
-        },
-        "Redrock": {
-          "dist": 4,
-          "hazard": 0.2,
-          "reward": 0.3
-        },
-        "Laramie": {
-          "dist": 5,
-          "hazard": 0.22,
-          "reward": 0.35
-        }
-      }
-    },
-    "Laramie": {
-      "x": 298.08956570095523,
-      "y": 446.59766303168465,
-      "goods": {
-        "dynamite": {
-          "base": 13,
-          "supply": 23,
-          "demand": 63,
-          "baseSupply": 40,
-          "baseDemand": 62
-        },
-        "gold": {
-          "base": 19,
-          "supply": 21,
-          "demand": 80,
-          "baseSupply": 25,
-          "baseDemand": 78
-        },
-        "rifles": {
-          "base": 24,
-          "supply": 27,
-          "demand": 79,
-          "baseSupply": 32,
-          "baseDemand": 75
-        }
-      },
-      "routes": {
-        "Sundance": {
-          "dist": 4,
-          "hazard": 0.25,
-          "reward": 0.35
-        },
-        "Cheyenne": {
-          "dist": 5,
-          "hazard": 0.22,
-          "reward": 0.35
-        }
-      }
-    },
-    "Tombstone": {
-      "x": 458.6868542583049,
-      "y": 173.33107956317292,
+    "t2": {
+      "x": 182.85715012323286,
+      "y": 372.3643348330543,
       "goods": {
         "whiskey": {
-          "base": 15,
-          "supply": 49,
-          "demand": 36,
-          "baseSupply": 55,
-          "baseDemand": 48
-        },
-        "cattle": {
           "base": 10,
-          "supply": 55,
-          "demand": 38,
-          "baseSupply": 58,
-          "baseDemand": 40
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 5,
+          "demand": 86
         }
       },
       "routes": {
-        "Sundance": {
-          "dist": 4,
-          "hazard": 0.2,
-          "reward": 0.3
+        "t1": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
         },
-        "Laramie": {
+        "t4": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t6": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t3": {
+      "x": 22.14286440894717,
+      "y": 467.6024300711495,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 27,
+          "demand": 28
+        }
+      },
+      "routes": {
+        "t1": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t14": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t4": {
+      "x": 198.33334059942334,
+      "y": 472.3643348330543,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 51,
+          "demand": 27
+        }
+      },
+      "routes": {
+        "t2": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t5": {
+      "x": 153.09522719610302,
+      "y": 292.60241190592444,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 30,
+          "demand": 34
+        }
+      },
+      "routes": {
+        "Deadwood": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t6": {
+      "x": 231.6666557675316,
+      "y": 225.93574069795153,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 5,
+          "demand": 68
+        }
+      },
+      "routes": {
+        "t2": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t7": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t7": {
+      "x": 367.3809414818173,
+      "y": 114.03097879318963,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 21,
+          "demand": 63
+        }
+      },
+      "routes": {
+        "t6": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t8": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t8": {
+      "x": 423.33332243419824,
+      "y": 200.93574069795153,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 28,
+          "demand": 26
+        }
+      },
+      "routes": {
+        "t7": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t9": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t9": {
+      "x": 376.90475100562685,
+      "y": 235.45955022176105,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 36,
+          "demand": 28
+        }
+      },
+      "routes": {
+        "t8": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t11": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t10": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t10": {
+      "x": 386.42856052943637,
+      "y": 284.26907403128484,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 27,
+          "demand": 29
+        }
+      },
+      "routes": {
+        "t9": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t12": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t11": {
+      "x": 285.23808433896016,
+      "y": 205.6976454598563,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 29,
+          "demand": 40
+        }
+      },
+      "routes": {
+        "t9": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t12": {
+      "x": 244.76191202799478,
+      "y": 391.4119538806733,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 29,
+          "demand": 26
+        }
+      },
+      "routes": {
+        "t10": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t13": {
+      "x": -76.66665940057663,
+      "y": 397.3643348330543,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 23,
+          "demand": 40
+        }
+      },
+      "routes": {
+        "t1": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t32": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t14": {
+      "x": -112.38094511486234,
+      "y": 522.3643348330543,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 28,
+          "demand": 29
+        }
+      },
+      "routes": {
+        "t3": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t15": {
+      "x": 648.3333315168107,
+      "y": 19.983346121651785,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 31,
+          "demand": 22
+        }
+      },
+      "routes": {
+        "t21": {
           "dist": 6,
-          "hazard": 0.35,
-          "reward": 0.4
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t16": {
+      "x": 719.7619029453822,
+      "y": -62.159511021205354,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 24,
+          "demand": 24
+        }
+      },
+      "routes": {
+        "t17": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t17": {
+      "x": 603.0952362787156,
+      "y": -56.2071300688244,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 24,
+          "demand": 30
+        }
+      },
+      "routes": {
+        "t18": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t16": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t18": {
+      "x": 547.1428553263346,
+      "y": 6.88810802641369,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 27,
+          "demand": 25
+        }
+      },
+      "routes": {
+        "t19": {
+          "dist": 5,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t17": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t19": {
+      "x": 286.4285696120489,
+      "y": 4.507155645461309,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 31,
+          "demand": 23
+        }
+      },
+      "routes": {
+        "t21": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t18": {
+          "dist": 5,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t60": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t43": {
+          "dist": 5,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t20": {
+      "x": 36.42856961204892,
+      "y": 31.888108026413686,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 23,
+          "demand": 30
+        }
+      },
+      "routes": {
+        "t43": {
+          "dist": 5,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t21": {
+      "x": 191.19047437395366,
+      "y": 124.74525088355654,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 15,
+          "demand": 48
+        }
+      },
+      "routes": {
+        "t22": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t19": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t15": {
+          "dist": 6,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t22": {
+      "x": -14.761906578427268,
+      "y": 129.5071556454613,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 22,
+          "demand": 62
+        }
+      },
+      "routes": {
+        "Deadwood": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t21": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t23": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t23": {
+      "x": -204.04764811197916,
+      "y": 71.17382231212797,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 10,
+          "demand": 78
+        }
+      },
+      "routes": {
+        "t22": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t24": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t25": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t32": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t24": {
+      "x": -154.04764811197916,
+      "y": 24.745250883556544,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 16,
+          "demand": 36
+        }
+      },
+      "routes": {
+        "t23": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t25": {
+      "x": -206.42860049293154,
+      "y": 15.221441359747022,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 35,
+          "demand": 47
+        }
+      },
+      "routes": {
+        "t41": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t26": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t23": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t26": {
+      "x": -348.09526715959817,
+      "y": 17.6023937406994,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 28,
+          "demand": 39
+        }
+      },
+      "routes": {
+        "t31": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t27": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t25": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t27": {
+      "x": -386.1905052548363,
+      "y": 98.55477469308035,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 23,
+          "demand": 35
+        }
+      },
+      "routes": {
+        "t26": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t31": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t28": {
+      "x": -402.8571719215029,
+      "y": -57.39760625930059,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 28,
+          "demand": 29
+        }
+      },
+      "routes": {
+        "t40": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t29": {
+      "x": -652.8571719215029,
+      "y": -68.1118919735863,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 29,
+          "demand": 29
+        }
+      },
+      "routes": {
+        "t40": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t39": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t30": {
+      "x": -583.8095528738838,
+      "y": -147.87379673549106,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 41,
+          "demand": 29
+        }
+      },
+      "routes": {}
+    },
+    "t31": {
+      "x": -419.5238385881696,
+      "y": 166.411931174142,
+      "goods": {
+        "whiskey": {
+          "base": 5,
+          "baseSupply": 1,
+          "baseDemand": 90,
+          "supply": 7,
+          "demand": 62
+        },
+        "gold": {
+          "base": 10,
+          "baseSupply": 210,
+          "baseDemand": 1,
+          "supply": 192,
+          "demand": 5
+        }
+      },
+      "routes": {
+        "t33": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t26": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t27": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t32": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t32": {
+      "x": -255.23812430245533,
+      "y": 237.84050260271343,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 9,
+          "demand": 40
+        }
+      },
+      "routes": {
+        "Deadwood": {
+          "dist": 5,
+          "hazard": 0.25,
+          "reward": 0
+        },
+        "t31": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t13": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t23": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t33": {
+      "x": -511.19050525483624,
+      "y": 247.36431212652295,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 32,
+          "demand": 29
+        }
+      },
+      "routes": {
+        "t37": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t34": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t31": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t34": {
+      "x": -457.6190766834077,
+      "y": 281.8881216503325,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 44,
+          "demand": 46
+        }
+      },
+      "routes": {
+        "t33": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t36": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t35": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t35": {
+      "x": -354.04764811197913,
+      "y": 314.0309787931896,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 36,
+          "demand": 25
+        }
+      },
+      "routes": {
+        "t34": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t36": {
+      "x": -586.1905052548362,
+      "y": 287.8405026027134,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 31,
+          "demand": 47
+        }
+      },
+      "routes": {
+        "t37": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t34": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t37": {
+      "x": -635.0000290643601,
+      "y": 210.45955022176105,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 26,
+          "demand": 36
+        }
+      },
+      "routes": {
+        "t38": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t33": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t36": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t38": {
+      "x": -655.2381243024553,
+      "y": 143.79286993117557,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 26,
+          "demand": 35
+        }
+      },
+      "routes": {
+        "t39": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t37": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t39": {
+      "x": -681.4286004929315,
+      "y": 53.31667945498511,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 32,
+          "demand": 32
+        }
+      },
+      "routes": {
+        "t29": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t38": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t40": {
+      "x": -468.3333623976934,
+      "y": -35.969034830729164,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 47,
+          "demand": 32
+        }
+      },
+      "routes": {
+        "t41": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t28": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t29": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t41": {
+      "x": -257.61907668340774,
+      "y": -180.0166538783482,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 9,
+          "demand": 119
+        }
+      },
+      "routes": {
+        "t42": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t40": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t25": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t42": {
+      "x": -136.1905052548363,
+      "y": -224.0642365955171,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 22,
+          "demand": 54
+        }
+      },
+      "routes": {
+        "t43": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t44": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t41": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t43": {
+      "x": 7.857113792782737,
+      "y": -189.54042707170757,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 39,
+          "demand": 44
+        }
+      },
+      "routes": {
+        "t19": {
+          "dist": 5,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t20": {
+          "dist": 5,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t42": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t45": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t44": {
+      "x": -338.57145763578865,
+      "y": -240.73090326218374,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 28,
+          "demand": 28
+        }
+      },
+      "routes": {
+        "t47": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t42": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t45": {
+      "x": 5.476161411830357,
+      "y": -287.1594746907552,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 25,
+          "demand": 27
+        }
+      },
+      "routes": {
+        "t43": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t46": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t46": {
+      "x": -201.66669573102678,
+      "y": -416.92137945265995,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 25,
+          "demand": 28
+        }
+      },
+      "routes": {
+        "t45": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t47": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "Outlaw's End": {
+          "dist": 10,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t47": {
+      "x": -382.6190766834077,
+      "y": -308.58804611932663,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 45,
+          "demand": 39
+        }
+      },
+      "routes": {
+        "t46": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t56": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t44": {
+          "dist": 1,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t49": {
+      "x": -456.4286004929315,
+      "y": -266.92137945265995,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 25,
+          "demand": 25
+        }
+      },
+      "routes": {}
+    },
+    "t50": {
+      "x": -560.0000290643601,
+      "y": -216.92137945265995,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 23,
+          "demand": 28
+        }
+      },
+      "routes": {}
+    },
+    "t52": {
+      "x": -643.3333623976933,
+      "y": -218.11185564313615,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 38,
+          "demand": 27
+        }
+      },
+      "routes": {}
+    },
+    "t53": {
+      "x": -671.9047909691219,
+      "y": -265.73090326218374,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 36,
+          "demand": 37
+        }
+      },
+      "routes": {}
+    },
+    "t54": {
+      "x": -683.8095528738838,
+      "y": -176.44518897646947,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 23,
+          "demand": 28
+        }
+      },
+      "routes": {}
+    },
+    "t55": {
+      "x": -681.4286004929315,
+      "y": -118.11185564313615,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 23,
+          "demand": 33
+        }
+      },
+      "routes": {}
+    },
+    "t56": {
+      "x": -385.0000290643601,
+      "y": -490.73090326218374,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 26,
+          "demand": 35
+        }
+      },
+      "routes": {
+        "t57": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t47": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t57": {
+      "x": -424.28574335007437,
+      "y": -587.1595110212053,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 30,
+          "demand": 40
+        }
+      },
+      "routes": {
+        "t56": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t58": {
+      "x": 665.0000004541306,
+      "y": -191.92137945265995,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 31,
+          "demand": 35
+        }
+      },
+      "routes": {
+        "t59": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t59": {
+      "x": 559.0476172310965,
+      "y": -131.2071300688244,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 35,
+          "demand": 26
+        }
+      },
+      "routes": {
+        "t60": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t58": {
+          "dist": 3,
+          "hazard": 0,
+          "reward": 0
+        }
+      }
+    },
+    "t60": {
+      "x": 464.99999818347743,
+      "y": -84.77855864025297,
+      "goods": {
+        "whiskey": {
+          "base": 10,
+          "baseSupply": 50,
+          "baseDemand": 50,
+          "supply": 24,
+          "demand": 32
+        }
+      },
+      "routes": {
+        "t19": {
+          "dist": 4,
+          "hazard": 0,
+          "reward": 0
+        },
+        "t59": {
+          "dist": 2,
+          "hazard": 0,
+          "reward": 0
         }
       }
     }
@@ -317,12 +1593,10 @@
     {
       "id": "trader_ruthless_red",
       "name": "Ruthless Red",
-      "cash": 84,
+      "cash": 210,
       "startingCash": 210,
-      "location": "Sundance",
-      "inventory": {
-        "gold": 1
-      },
+      "location": "t2",
+      "inventory": {},
       "state": "idle",
       "travelDaysRemaining": 0,
       "travelDestination": null,
@@ -332,36 +1606,89 @@
           "dynamite",
           "rifles",
           "whiskey",
-          "ammunition"
+          "cattle"
         ],
         "preferredTowns": [
-          "Deadwood",
-          "Sundance",
-          "Laramie",
-          "Outlaw's End",
+          "Blackwater",
+          "Redrock",
           "Cheyenne",
           "Tombstone",
-          "Blackwater",
-          "Redrock"
+          "Sundance",
+          "Deadwood",
+          "t2",
+          "t3",
+          "t4",
+          "t5",
+          "t6",
+          "t7",
+          "t8",
+          "t9",
+          "t10",
+          "t11",
+          "t12",
+          "t13",
+          "t14",
+          "t15",
+          "t16",
+          "t17",
+          "t18",
+          "t19",
+          "t21",
+          "t20",
+          "t22",
+          "t24",
+          "t25",
+          "t26",
+          "t27",
+          "t28",
+          "t30",
+          "t29",
+          "t31",
+          "t32",
+          "t33",
+          "t34",
+          "t35",
+          "t36",
+          "t37",
+          "t38",
+          "t39",
+          "t40",
+          "t41",
+          "t42",
+          "t43",
+          "t44",
+          "t46",
+          "t45",
+          "t47",
+          "t49",
+          "t50",
+          "t52",
+          "t54",
+          "t53",
+          "t55",
+          "t56",
+          "t57",
+          "t58",
+          "t60",
+          "t59"
         ],
-        "aggression": 1,
-        "riskTolerance": 1
+        "aggression": 0.12,
+        "riskTolerance": 0.08
       },
       "stats": {
         "totalEarned": 0,
-        "tradesMade": 1,
+        "tradesMade": 0,
         "eventsTriggered": 0
-      }
+      },
+      "purchaseRecords": {}
     },
     {
       "id": "trader_shadow_jack",
       "name": "Shadow Jack",
-      "cash": 124,
+      "cash": 190,
       "startingCash": 190,
-      "location": "Redrock",
-      "inventory": {
-        "ammunition": 6
-      },
+      "location": "Deadwood",
+      "inventory": {},
       "state": "idle",
       "travelDaysRemaining": 0,
       "travelDestination": null,
@@ -375,26 +1702,27 @@
           "Blackwater",
           "Redrock",
           "Cheyenne",
-          "Deadwood",
-          "Sundance",
           "Laramie",
-          "Tombstone"
+          "Tombstone",
+          "Sundance",
+          "Deadwood"
         ],
         "aggression": 0.78,
         "riskTolerance": 0.72
       },
       "stats": {
         "totalEarned": 0,
-        "tradesMade": 1,
+        "tradesMade": 0,
         "eventsTriggered": 0
-      }
+      },
+      "purchaseRecords": {}
     },
     {
       "id": "trader_viper_mcgraw",
       "name": "Viper McGraw",
       "cash": 175,
       "startingCash": 175,
-      "location": "Blackwater",
+      "location": "t8",
       "inventory": {},
       "state": "idle",
       "travelDaysRemaining": 0,
@@ -408,11 +1736,11 @@
         ],
         "preferredTowns": [
           "Deadwood",
+          "Sundance",
           "Laramie",
+          "Cheyenne",
           "Blackwater",
           "Redrock",
-          "Sundance",
-          "Cheyenne",
           "Tombstone"
         ],
         "aggression": 0.96,
@@ -422,14 +1750,15 @@
         "totalEarned": 0,
         "tradesMade": 0,
         "eventsTriggered": 0
-      }
+      },
+      "purchaseRecords": {}
     },
     {
       "id": "trader_buckshot_billy",
       "name": "Buckshot Billy",
-      "cash": 165,
-      "startingCash": 165,
-      "location": "Blackwater",
+      "cash": 200,
+      "startingCash": 200,
+      "location": "t23",
       "inventory": {},
       "state": "idle",
       "travelDaysRemaining": 0,
@@ -449,21 +1778,22 @@
           "Laramie",
           "Tombstone"
         ],
-        "aggression": 0.65,
-        "riskTolerance": 0.55
+        "aggression": 1,
+        "riskTolerance": 1
       },
       "stats": {
         "totalEarned": 0,
         "tradesMade": 0,
         "eventsTriggered": 0
-      }
+      },
+      "purchaseRecords": {}
     },
     {
       "id": "trader_dusty_trails",
       "name": "Dusty Trails",
       "cash": 155,
       "startingCash": 155,
-      "location": "Cheyenne",
+      "location": "t2",
       "inventory": {},
       "state": "idle",
       "travelDaysRemaining": 0,
@@ -477,8 +1807,8 @@
           "Cheyenne",
           "Blackwater",
           "Redrock",
-          "Laramie",
           "Tombstone",
+          "Laramie",
           "Sundance",
           "Deadwood"
         ],
@@ -489,24 +1819,19 @@
         "totalEarned": 0,
         "tradesMade": 0,
         "eventsTriggered": 0
-      }
+      },
+      "purchaseRecords": {}
     },
     {
       "id": "trader_slingshot_sam",
       "name": "Slingshot Sam",
-      "cash": 116,
+      "cash": 180,
       "startingCash": 180,
-      "location": "Laramie",
-      "inventory": {
-        "dynamite": 2
-      },
-      "state": "travelling",
-      "travelDaysRemaining": {
-        "dist": 5,
-        "hazard": 0.22,
-        "reward": 0.35
-      },
-      "travelDestination": "Cheyenne",
+      "location": "t19",
+      "inventory": {},
+      "state": "idle",
+      "travelDaysRemaining": 0,
+      "travelDestination": null,
       "personality": {
         "preferredGoods": [
           "dynamite",
@@ -515,11 +1840,11 @@
         ],
         "preferredTowns": [
           "Laramie",
+          "Sundance",
           "Outlaw's End",
           "Deadwood",
           "Blackwater",
           "Redrock",
-          "Sundance",
           "Cheyenne",
           "Tombstone"
         ],
@@ -528,24 +1853,21 @@
       },
       "stats": {
         "totalEarned": 0,
-        "tradesMade": 1,
+        "tradesMade": 0,
         "eventsTriggered": 0
-      }
+      },
+      "purchaseRecords": {}
     },
     {
       "id": "trader_iron_horse",
       "name": "Iron Horse",
       "cash": 140,
       "startingCash": 140,
-      "location": "Tombstone",
+      "location": "t4",
       "inventory": {},
-      "state": "travelling",
-      "travelDaysRemaining": {
-        "dist": 6,
-        "hazard": 0.35,
-        "reward": 0.4
-      },
-      "travelDestination": "Laramie",
+      "state": "idle",
+      "travelDaysRemaining": 0,
+      "travelDestination": null,
       "personality": {
         "preferredGoods": [
           "whiskey",
@@ -554,7 +1876,11 @@
         "preferredTowns": [
           "Tombstone",
           "Sundance",
-          "Laramie"
+          "Laramie",
+          "Deadwood",
+          "Blackwater",
+          "Redrock",
+          "Cheyenne"
         ],
         "aggression": 0.7,
         "riskTolerance": 0.65
@@ -563,14 +1889,15 @@
         "totalEarned": 0,
         "tradesMade": 0,
         "eventsTriggered": 0
-      }
+      },
+      "purchaseRecords": {}
     },
     {
       "id": "trader_bloodmoon_bart",
       "name": "Bloodmoon Bart",
       "cash": 195,
       "startingCash": 195,
-      "location": "Sundance",
+      "location": "t23",
       "inventory": {},
       "state": "idle",
       "travelDaysRemaining": 0,
@@ -579,15 +1906,51 @@
         "preferredGoods": [
           "gold",
           "dynamite",
-          "rifles"
+          "rifles",
+          "ammunition",
+          "cattle",
+          "grain",
+          "whiskey"
         ],
         "preferredTowns": [
           "Sundance",
           "Laramie",
           "Deadwood",
-          "Blackwater",
-          "Cheyenne",
-          "Tombstone"
+          "t1",
+          "t2",
+          "t3",
+          "t4",
+          "t5",
+          "t6",
+          "t7",
+          "t8",
+          "t9",
+          "t10",
+          "t11",
+          "t12",
+          "t13",
+          "t14",
+          "t15",
+          "t16",
+          "t17",
+          "t18",
+          "t19",
+          "t20",
+          "t22",
+          "t21",
+          "t23",
+          "t24",
+          "t25",
+          "t26",
+          "t27",
+          "t28",
+          "t32",
+          "t31",
+          "t30",
+          "t29",
+          "t33",
+          "t34",
+          "t35"
         ],
         "aggression": 0.9,
         "riskTolerance": 0.85
@@ -596,14 +1959,15 @@
         "totalEarned": 0,
         "tradesMade": 0,
         "eventsTriggered": 0
-      }
+      },
+      "purchaseRecords": {}
     },
     {
       "id": "trader_rattler_joe",
       "name": "Rattler Joe",
       "cash": 168,
       "startingCash": 168,
-      "location": "Deadwood",
+      "location": "t41",
       "inventory": {},
       "state": "idle",
       "travelDaysRemaining": 0,
@@ -617,10 +1981,10 @@
           "Deadwood",
           "Redrock",
           "Sundance",
+          "Blackwater",
           "Cheyenne",
           "Laramie",
-          "Tombstone",
-          "Blackwater"
+          "Tombstone"
         ],
         "aggression": 0.8,
         "riskTolerance": 0.75
@@ -629,20 +1993,21 @@
         "totalEarned": 0,
         "tradesMade": 0,
         "eventsTriggered": 0
-      }
+      },
+      "purchaseRecords": {}
     },
     {
       "id": "trader_gravedigger_gus",
       "name": "Gravedigger Gus",
-      "cash": 110,
+      "cash": 35,
       "startingCash": 150,
-      "location": "Blackwater",
+      "location": "t7",
       "inventory": {
-        "cattle": 8
+        "whiskey": 5
       },
-      "state": "idle",
-      "travelDaysRemaining": 0,
-      "travelDestination": null,
+      "state": "travelling",
+      "travelDaysRemaining": 3,
+      "travelDestination": "t6",
       "personality": {
         "preferredGoods": [
           "cattle",
@@ -652,10 +2017,10 @@
           "Blackwater",
           "Cheyenne",
           "Tombstone",
-          "Deadwood",
+          "Laramie",
           "Sundance",
           "Redrock",
-          "Laramie"
+          "Deadwood"
         ],
         "aggression": 0.6,
         "riskTolerance": 0.5
@@ -664,29 +2029,31 @@
         "totalEarned": 0,
         "tradesMade": 1,
         "eventsTriggered": 0
-      }
+      },
+      "purchaseRecords": {}
     }
   ],
   "settings": {
-    "stabilisationRate": 0.1,
-    "aiEnabled": true
+    "stabilisationRate": 0.05,
+    "aiEnabled": true,
+    "riskAversionFactor": 10
   },
   "turnState": {
     "phase": "player",
     "roundNumber": 1,
     "roundOrder": [
-      "trader_iron_horse",
-      "trader_shadow_jack",
-      "trader_viper_mcgraw",
-      "trader_ruthless_red",
-      "trader_slingshot_sam",
-      "trader_bloodmoon_bart",
-      "trader_dusty_trails",
       "trader_gravedigger_gus",
       "player",
+      "trader_ruthless_red",
+      "trader_iron_horse",
+      "trader_viper_mcgraw",
+      "trader_rattler_joe",
+      "trader_dusty_trails",
+      "trader_bloodmoon_bart",
       "trader_buckshot_billy",
-      "trader_rattler_joe"
+      "trader_shadow_jack",
+      "trader_slingshot_sam"
     ],
-    "playerIndex": 8
+    "playerIndex": 1
   }
 }
